@@ -38,16 +38,6 @@ Allows you to set various options which affect the entire layer for the current 
 
 ![Scene Configuration Screenshot](docs/simplefog-options.png?raw=true "Scene Config")
 
-## Planned Future Features
-- More AutoVisibility options:
-  - Reveal based on center of token
-  - Reveal only if entire token visible
-  - Reveal if any part of token is visible
-- Brush Smoothing / Interpolation
-- Sepia / monochrome filters
-- Add indicator icon of player controlled icons hidden under fog
-- Currently incompatible with the module "GM Scene Background" when a GM layer is active
-
 ## License
 This package is under an [MIT license](LICENSE) and the [Foundry Virtual Tabletop Limited License Agreement for module development](https://foundryvtt.com/article/license/).
 
