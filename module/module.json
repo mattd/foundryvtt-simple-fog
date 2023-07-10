@@ -1,0 +1,139 @@
+{
+	  "id": "simplefog",
+	  "title": "Simplefog",
+	  "description": "Manually draw fog of war in FoundryVTT.",
+	  "version": "0.4.0",
+	  "authors": [
+		    {
+			      "name": "Vance Cole",
+			      "url": "",
+			      "discord": "",
+			      "twitter": "",
+			      "patreon": "",
+			      "github": "",
+			      "ko-fi": "",
+			      "reddit": "",
+			      "email": ""
+		    },
+		    {
+			      "name": "Chris Hampton",
+			      "url": "",
+			      "discord": "",
+			      "twitter": "",
+			      "patreon": "",
+			      "github": "",
+			      "ko-fi": "",
+			      "reddit": "",
+			      "email": ""
+		    },
+		    {
+			      "name": "Jeremy",
+			      "url": "https://github.com/UranusBytes",
+			      "discord": "",
+			      "twitter": "",
+			      "patreon": "",
+			      "github": "UranusBytes",
+			      "ko-fi": "",
+			      "reddit": "",
+			      "email": ""
+		    },
+		    {
+			      "name": "p4535992",
+			      "url": "https://github.com/p4535992",
+			      "discord": "",
+			      "twitter": "",
+			      "patreon": "",
+			      "github": "p4535992",
+			      "ko-fi": "",
+			      "reddit": "",
+			      "email": ""
+		    },
+		    {
+			      "name": "cirrahn",
+			      "url": "https://github.com/cirrahn",
+			      "discord": "",
+			      "twitter": "",
+			      "patreon": "cirrahn",
+			      "github": "cirrahn",
+			      "ko-fi": "",
+			      "reddit": "",
+			      "email": ""
+		    },
+		    {
+			      "name": "Matt Dawson",
+			      "url": "https://github.com/mattd",
+			      "discord": "",
+			      "twitter": "",
+			      "patreon": "",
+			      "github": "",
+			      "ko-fi": "",
+			      "reddit": "",
+			      "email": ""
+		    }
+	  ],
+	  "type": "module",
+	  "socket": true,
+	  "includes": [
+		    "./classes/**",
+		    "./css/**",
+		    "./js/**",
+		    "./languages/**",
+		    "./libs/**",
+		    "./main.js",
+		    "./module.json",
+		    "./templates/**"
+	  ],
+	  "media": [
+		    {
+			      "type": "icon",
+			      "location": ""
+		    },
+		    {
+			      "type": "cover",
+			      "location": ""
+		    },
+		    {
+			      "type": "screenshot",
+			      "location": ""
+		    }
+	  ],
+	  "languages": [
+		    {
+			      "lang": "en",
+			      "name": "English",
+			      "path": "languages/en.json"
+		    },
+		    {
+			      "lang": "es",
+			      "name": "Español",
+			      "path": "languages/es.json"
+		    },
+		    {
+			      "lang": "ja",
+			      "name": "日本語 (Japanese)",
+			      "path": "languages/ja.json"
+		    }
+	  ],
+	  "packs": [],
+	  "systems": [],
+	  "scripts": [],
+	  "esmodules": ["main.js", "js/controls.js"],
+	  "styles": ["css/brush-controls.css"],
+	  "compatibility": {
+		    "minimum": 10,
+		    "verified": 11.305,
+		    "maximum": 11
+	  },
+	  "manifestPlusVersion": "1.2.1",
+	  "url": "https://github.com/mattd/foundryvtt-simplefog",
+    "manifest": "https://raw.githubusercontent.com/mattd/foundryvtt-simplefog/main/module/module.json",
+    "download": "https://github.com/mattd/foundryvtt-simplefog/releases/download/v2.3.0/build.zip",
+	  "readme": "https://github.com/mattd/foundryvtt-simplefog/blob/v0.3.1/README.md",
+	  "bugs": "https://github.com/mattd/foundryvtt-simplefog/issues",
+	  "allowBugReporter": true,
+	  "relationships": {
+		    "systems": [],
+		    "requires": [],
+		    "conflicts": []
+	  }
+}
