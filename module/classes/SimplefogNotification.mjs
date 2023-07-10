@@ -4,36 +4,34 @@
 import { dmToGM } from "../js/helpers.mjs";
 
 export default class SimplefogNotification {
-	  constructor() {}
+    constructor() {}
 
-	  static checkVersion() {
+    static checkVersion() {
         let packageVersion;
 
         if (isNewerVersion(game.version, "9")) {
             packageVersion = game.modules.get("simplefog").version;
-        }
-        else {
+        } else {
             packageVersion = game.modules.get("simplefog").data.version;
         }
 
-		    if (
-			      game.user.isGM &&
-			      game.user.getFlag(
-                "simplefog", "versionNotification"
-            ) !== packageVersion
-		    ) {
-			      // GM has never seen current version message
-			      dmToGM(
+        if (
+            game.user.isGM &&
+            game.user.getFlag("simplefog", "versionNotification") !==
+                packageVersion
+        ) {
+            // GM has never seen current version message
+            dmToGM(
                 game.i18n.localize("SIMPLEFOG.versionNotification"),
                 undefined
             );
 
-			      // Update the saved version
-			      game.user.setFlag(
+            // Update the saved version
+            game.user.setFlag(
                 "simplefog",
                 "versionNotification",
                 packageVersion
             );
-		    }
-	  }
+        }
+    }
 }

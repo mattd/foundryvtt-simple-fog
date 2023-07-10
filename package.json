@@ -21,7 +21,8 @@
     "author": "",
     "license": "SEE LICENSE IN LICENSE",
     "devDependencies": {
-        "ava": "^5.3.0"
+        "ava": "^5.3.0",
+        "prettier": "^2.8.8"
     },
     "ava": {
         "verbose": true

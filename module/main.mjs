@@ -3,23 +3,23 @@ import { registerSettings } from "./js/settings.mjs";
 import { initHooks, setupHooks, readyHooks } from "./js/simplefog.mjs";
 
 Hooks.once("init", async () => {
-	  console.log(
+    console.log(
         `${CONSTANTS.MODULE_NAME} | Initializing ${CONSTANTS.MODULE_NAME}`
     );
-	  registerSettings();
-	  initHooks();
+    registerSettings();
+    initHooks();
 });
 
 Hooks.once("setup", function () {
-	  setupHooks();
+    setupHooks();
 });
 
 Hooks.once("ready", async () => {
-	  readyHooks();
+    readyHooks();
 });
 
 Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
-	  registerPackageDebugFlag("simplefog");
+    registerPackageDebugFlag("simplefog");
 });
 
 /**
@@ -27,8 +27,8 @@ Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
  * @param api to set to game module.
  */
 export function setApi(api) {
-	const data = game.modules.get(CONSTANTS.MODULE_NAME);
-	data.api = api;
+    const data = game.modules.get(CONSTANTS.MODULE_NAME);
+    data.api = api;
 }
 
 /**
@@ -36,8 +36,8 @@ export function setApi(api) {
  * @returns Api from games module.
  */
 export function getApi() {
-	  const data = game.modules.get(CONSTANTS.MODULE_NAME);
-	  return data.api;
+    const data = game.modules.get(CONSTANTS.MODULE_NAME);
+    return data.api;
 }
 
 /**
@@ -45,8 +45,8 @@ export function getApi() {
  * @param socket to set to game module.
  */
 export function setSocket(socket) {
-	  const data = game.modules.get(CONSTANTS.MODULE_NAME);
-	  data.socket = socket;
+    const data = game.modules.get(CONSTANTS.MODULE_NAME);
+    data.socket = socket;
 }
 
 /*
@@ -54,6 +54,6 @@ export function setSocket(socket) {
  * @returns Socket from games module.
  */
 export function getSocket() {
-	  const data = game.modules.get(CONSTANTS.MODULE_NAME);
-	  return data.socket;
+    const data = game.modules.get(CONSTANTS.MODULE_NAME);
+    return data.socket;
 }

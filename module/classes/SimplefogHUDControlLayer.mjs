@@ -4,11 +4,11 @@
  */
 
 export default class SimplefogHUDControlLayer extends InteractionLayer {
-	  constructor(layername) {
-		    super();
-	  }
+    constructor(layername) {
+        super();
+    }
 
-	  static get layerOptions() {
-		    return super.layerOptions;
-	  }
+    static get layerOptions() {
+        return super.layerOptions;
+    }
 }
