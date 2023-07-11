@@ -1,6 +1,6 @@
 import CONSTANTS from "./js/constants.mjs";
 import { registerSettings } from "./js/settings.mjs";
-import { initHooks, setupHooks, readyHooks } from "./js/simplefog.mjs";
+import { initHooks, readyHooks } from "./js/simplefog.mjs";
 
 Hooks.once("init", async () => {
     console.log(
@@ -8,10 +8,6 @@ Hooks.once("init", async () => {
     );
     registerSettings();
     initHooks();
-});
-
-Hooks.once("setup", function () {
-    setupHooks();
 });
 
 Hooks.once("ready", async () => {

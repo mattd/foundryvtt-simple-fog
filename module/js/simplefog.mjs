@@ -46,8 +46,8 @@ export const readyHooks = async () => {
     SimplefogMigrations.check();
 
     // Fix simplefog zIndex
-
     canvas.simplefog.refreshZIndex();
+
     // Move object hud to tokens layer
     game.canvas.controls.hud.setParent(game.canvas.simplefogHUDControls);
 
