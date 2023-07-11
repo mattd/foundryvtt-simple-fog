@@ -117,7 +117,7 @@
     "packs": [],
     "systems": [],
     "scripts": [],
-    "esmodules": ["main.js", "js/controls.js"],
+    "esmodules": ["main.mjs", "js/controls.mjs"],
     "styles": ["css/brush-controls.css"],
     "compatibility": {
         "minimum": 10,
