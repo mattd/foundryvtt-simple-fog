@@ -1,7 +1,7 @@
 /*
  * Provides for the ability to check and run migration code for changes to data
  */
-import { dmToGM, simplefogLog, simplefogLogDebug } from "../js/utils.js";
+import { dmToGM, simplefogLog, simplefogLogDebug } from "../js/utils.mjs";
 
 export default class SimplefogMigrations {
     static check() {
