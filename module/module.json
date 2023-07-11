@@ -126,9 +126,9 @@
     },
     "manifestPlusVersion": "1.2.1",
     "url": "https://github.com/mattd/foundryvtt-simplefog",
-    "manifest": "https://raw.githubusercontent.com/mattd/foundryvtt-simplefog/main/module/module.json",
-    "download": "https://github.com/mattd/foundryvtt-simplefog/releases/download/v2.3.0/build.zip",
-    "readme": "https://github.com/mattd/foundryvtt-simplefog/blob/v0.3.1/README.md",
+    "manifest": "https://raw.githubusercontent.com/mattd/foundryvtt-simplefog/v0.4.0/module/module.json",
+    "download": "https://github.com/mattd/foundryvtt-simplefog/releases/download/v0.4.0/build.zip",
+    "readme": "https://github.com/mattd/foundryvtt-simplefog/blob/v0.4.0/README.md",
     "bugs": "https://github.com/mattd/foundryvtt-simplefog/issues",
     "allowBugReporter": true,
     "relationships": {
