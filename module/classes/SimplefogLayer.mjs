@@ -10,7 +10,7 @@ import {
     hexToPercent,
     simplefogLog,
     simplefogLogDebug
-} from "../js/helpers.mjs";
+} from "../js/utils.mjs";
 
 export default class SimplefogLayer extends MaskLayer {
     constructor() {

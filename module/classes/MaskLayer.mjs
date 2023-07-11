@@ -5,7 +5,7 @@
  * and replaying the mask / undo etc.
  */
 
-import { simplefogLog, simplefogLogDebug } from "../js/helpers.mjs";
+import { simplefogLog, simplefogLogDebug } from "../js/utils.mjs";
 
 export default class MaskLayer extends InteractionLayer {
     constructor(layername) {

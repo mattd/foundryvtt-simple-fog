@@ -1,4 +1,4 @@
-import { hexToPercent, percentToHex } from "../js/helpers.mjs";
+import { hexToPercent, percentToHex } from "../js/utils.mjs";
 
 export default class BrushControls extends FormApplication {
     static get defaultOptions() {

@@ -6,7 +6,7 @@ import {
     simplefogLogDebug,
     addSimplefogControlToggleListener,
     addSimplefogOpacityToggleListener
-} from "./helpers.mjs";
+} from "./utils.mjs";
 import SimplefogHUDControlLayer from "../classes/SimplefogHUDControlLayer.mjs";
 import SimplefogNotification from "../classes/SimplefogNotification.mjs";
 import API from "./api.mjs";

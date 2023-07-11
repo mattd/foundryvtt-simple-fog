@@ -1,7 +1,7 @@
 /*
  * Monkeypatch for core canvas.sight.update() that implements autovisibility
  */
-import { readPixel } from "./helpers.mjs";
+import { readPixel } from "./utils.mjs";
 
 /*
  * The token's worldTransform is not updated yet when this is called

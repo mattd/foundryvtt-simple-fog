@@ -1,7 +1,7 @@
 /*
  * Provides a mechanism to send whisper to GM when new version installed.
  */
-import { dmToGM } from "../js/helpers.mjs";
+import { dmToGM } from "../js/utils.mjs";
 
 export default class SimplefogNotification {
     constructor() {}

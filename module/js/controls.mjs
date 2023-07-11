@@ -1,6 +1,6 @@
 import SimplefogConfig from "../classes/SimplefogConfig.mjs";
 import BrushControls from "../classes/BrushControls.mjs";
-import { simplefogLogDebug } from "./helpers.mjs";
+import { simplefogLogDebug } from "./utils.mjs";
 
 /**
  * Add control buttons

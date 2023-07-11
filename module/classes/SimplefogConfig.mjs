@@ -1,4 +1,4 @@
-import { webToHex, hexToWeb } from "../js/helpers.mjs";
+import { webToHex, hexToWeb } from "../js/utils.mjs";
 
 export default class SimplefogConfig extends FormApplication {
     static get defaultOptions() {
