@@ -1,11 +1,12 @@
 {
     "name": "foundryvtt-simplefog",
     "description": "Manually draw fog of war in FoundryVTT.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "main": "main.mjs",
     "scripts": {
         "clean": "rm build.zip",
         "package": "cd module && zip -r ../build.zip . -x src\\* && cd ..",
+        "prepare": "husky install",
         "release": "npm test && npm run package",
         "test": "ava"
     },
@@ -22,7 +23,9 @@
     "license": "SEE LICENSE IN LICENSE",
     "devDependencies": {
         "ava": "^5.3.0",
-        "prettier": "^2.8.8"
+        "husky": "^8.0.0",
+        "prettier": "^2.8.8",
+        "pretty-quick": "^3.1.3"
     },
     "ava": {
         "verbose": true

@@ -9,8 +9,6 @@ import {
 } from "./utils.mjs";
 import SimplefogHUDControlLayer from "../classes/SimplefogHUDControlLayer.mjs";
 import SimplefogNotification from "../classes/SimplefogNotification.mjs";
-import API from "./api.mjs";
-import { setApi } from "../main.mjs";
 
 export const initHooks = () => {
     simplefogLog("Initializing simplefog", true);
@@ -40,10 +38,6 @@ export const initHooks = () => {
     }
 };
 
-export const setupHooks = () => {
-    setApi(API);
-};
-
 /*
  * Apply compatibility patches
  */
@@ -52,8 +46,8 @@ export const readyHooks = async () => {
     SimplefogMigrations.check();
 
     // Fix simplefog zIndex
-
     canvas.simplefog.refreshZIndex();
+
     // Move object hud to tokens layer
     game.canvas.controls.hud.setParent(game.canvas.simplefogHUDControls);
 
