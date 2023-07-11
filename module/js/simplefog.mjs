@@ -9,8 +9,6 @@ import {
 } from "./utils.mjs";
 import SimplefogHUDControlLayer from "../classes/SimplefogHUDControlLayer.mjs";
 import SimplefogNotification from "../classes/SimplefogNotification.mjs";
-import API from "./api.mjs";
-import { setApi } from "../main.mjs";
 
 export const initHooks = () => {
     simplefogLog("Initializing simplefog", true);
@@ -38,10 +36,6 @@ export const initHooks = () => {
             enumerable: false
         });
     }
-};
-
-export const setupHooks = () => {
-    setApi(API);
 };
 
 /*
