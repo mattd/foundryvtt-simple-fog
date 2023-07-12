@@ -1,7 +1,7 @@
 {
     "name": "foundryvtt-simplefog",
     "description": "Manually draw fog of war in FoundryVTT.",
-    "version": "11.0.0",
+    "version": "11.0.1",
     "main": "main.mjs",
     "scripts": {
         "clean": "rm build.zip",
