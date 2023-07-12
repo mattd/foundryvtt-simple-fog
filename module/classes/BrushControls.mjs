@@ -31,17 +31,8 @@ export default class BrushControls extends FormApplication {
         };
     }
 
-    /* -------------------------------------------- */
-    /*  Event Listeners and Handlers                */
-    /* -------------------------------------------- */
-
-    /** @override */
-    activateListeners(html) {
-        super.activateListeners(html);
-    }
-
     /**
-     * This method is called upon form submission after form data is validated.
+     * Called upon form submission after form data is validated.
      *
      * @param event {Event}       The initial triggering submission event
      * @param formData {Object}   The object of validated form data with which

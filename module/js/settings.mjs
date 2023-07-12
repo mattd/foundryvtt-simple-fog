@@ -1,4 +1,3 @@
-import API from "./api.mjs";
 import CONSTANTS from "./constants.mjs";
 import config from "./config.mjs";
 import SimplefogLayer from "../classes/SimplefogLayer.mjs";
