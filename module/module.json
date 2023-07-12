@@ -120,7 +120,7 @@
     "esmodules": ["main.mjs", "js/controls.mjs"],
     "styles": ["css/brush-controls.css"],
     "compatibility": {
-        "minimum": 10,
+        "minimum": 11,
         "verified": 11.305,
         "maximum": 11
     },
