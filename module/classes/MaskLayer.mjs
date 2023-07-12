@@ -503,23 +503,13 @@ export default class MaskLayer extends InteractionLayer {
      * @param data {Object}       PIXI Object to be used as brush
      */
     composite(brush) {
-        if (isNewerVersion(game.version, "10.299")) {
-            const opt = {
-                renderTexture: this.maskTexture,
-                clear: false,
-                transform: null,
-                skipUpdateTransform: false
-            };
-            canvas.app.renderer.render(brush, opt);
-        } else {
-            canvas.app.renderer.render(
-                brush,
-                this.maskTexture,
-                false,
-                null,
-                false
-            );
-        }
+        const opt = {
+            renderTexture: this.maskTexture,
+            clear: false,
+            transform: null,
+            skipUpdateTransform: false
+        };
+        canvas.app.renderer.render(brush, opt);
     }
 
     /**
