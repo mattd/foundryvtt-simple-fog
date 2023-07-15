@@ -17,12 +17,6 @@ export default class SimplefogLayer extends MaskLayer {
         simplefogLogDebug("SimplefogLayer.constructor");
         super("simplefog");
 
-        // Register event listerenrs
-        Hooks.on("ready", () => {
-            this._registerMouseListeners();
-            this._registerKeyboardListeners();
-        });
-
         this.DEFAULTS = Object.assign(this.DEFAULTS, {
             transition: true,
             transitionSpeed: 800,
@@ -36,11 +30,6 @@ export default class SimplefogLayer extends MaskLayer {
             autoVisGM: false,
             vThreshold: 1,
             hotKeyTool: "Brush"
-        });
-
-        // React to changes to current scene
-        Hooks.on("updateScene", (scene, data) => {
-            this._updateScene(scene, data);
         });
 
         // Canvas expects the options.name property to be set
@@ -118,7 +107,7 @@ export default class SimplefogLayer extends MaskLayer {
     /**
      * React to updates of canvas.scene flags
      */
-    _updateScene(scene, data) {
+    updateScene(scene, data) {
         // Check if update applies to current viewed scene
         if (!scene._view) return;
         // React to visibility change
@@ -236,7 +225,7 @@ export default class SimplefogLayer extends MaskLayer {
     /**
      * Adds the mouse listeners to the layer
      */
-    _registerMouseListeners() {
+    registerMouseListeners() {
         this.addListener("pointerdown", this._pointerDown);
         this.addListener("pointerup", this._pointerUp);
         this.addListener("pointermove", this._pointerMove);
@@ -247,7 +236,7 @@ export default class SimplefogLayer extends MaskLayer {
     /**
      * Adds the keyboard listeners to the layer
      */
-    _registerKeyboardListeners() {
+    registerKeyboardListeners() {
         $(document).keydown(event => {
             // Only react if simplefog layer is active
             if (ui.controls.activeControl !== this.layername) return;

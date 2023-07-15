@@ -5,7 +5,7 @@ import { simplefogLogDebug } from "./utils.mjs";
 /**
  * Add control buttons
  */
-Hooks.on("getSceneControlButtons", controls => {
+export const onGetSceneControlButtons = function (controls) {
     simplefogLogDebug("controls.getSceneControlButtons");
     if (!game.user.isGM) return;
     controls.push({
@@ -89,13 +89,13 @@ Hooks.on("getSceneControlButtons", controls => {
         ],
         activeTool: "brush"
     });
-});
+};
 
 /**
  * Handles adding the custom brush controls pallet
  * and switching active brush flag
  */
-Hooks.on("renderSceneControls", controls => {
+export const onRenderSceneControls = function (controls) {
     simplefogLogDebug("controls.renderSceneControls");
     // Switching to layer
     if (canvas.simplefog != null) {
@@ -119,12 +119,12 @@ Hooks.on("renderSceneControls", controls => {
             if (bc) bc.remove();
         }
     }
-});
+};
 
 /**
  * Sets Y position of the brush controls to account for scene navigation buttons
  */
-function setBrushControlPos() {
+export const setBrushControlPos = function () {
     const brushControl = $("#simplefog-brush-controls");
     const navigation = $("#navigation");
     if (brushControl.length && navigation.length) {
@@ -170,7 +170,3 @@ function cancelToggleSimpleFog(result = undefined) {
     ).tools[0].active = true;
     ui.controls.render();
 }
-
-// Reset position when brush controls are rendered or sceneNavigation changes
-Hooks.on("renderBrushControls", setBrushControlPos);
-Hooks.on("renderSceneNavigation", setBrushControlPos);
