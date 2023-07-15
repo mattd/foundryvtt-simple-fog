@@ -7,7 +7,6 @@ import {
 import SimplefogLayer from "../classes/SimplefogLayer.mjs";
 import SimplefogMigrations from "../classes/SimplefogMigrations.mjs";
 import SimplefogHUDControlLayer from "../classes/SimplefogHUDControlLayer.mjs";
-import SimplefogNotification from "../classes/SimplefogNotification.mjs";
 
 export const onInit = () => {
     simplefogLog("Initializing simplefog", true);
@@ -46,9 +45,6 @@ export const onReady = async () => {
 
     // Move object hud to tokens layer
     game.canvas.controls.hud.setParent(game.canvas.simplefogHUDControls);
-
-    // Check if new version; if so send DM to GM
-    SimplefogNotification.checkVersion();
 
     canvas.perception.refresh();
 
