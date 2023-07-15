@@ -124,7 +124,7 @@ export const onRenderSceneControls = function (controls) {
 /**
  * Sets Y position of the brush controls to account for scene navigation buttons
  */
-function setBrushControlPos() {
+export const setBrushControlPos = function () {
     const brushControl = $("#simplefog-brush-controls");
     const navigation = $("#navigation");
     if (brushControl.length && navigation.length) {
@@ -170,7 +170,3 @@ function cancelToggleSimpleFog(result = undefined) {
     ).tools[0].active = true;
     ui.controls.render();
 }
-
-// Reset position when brush controls are rendered or sceneNavigation changes
-Hooks.on("renderBrushControls", setBrushControlPos);
-Hooks.on("renderSceneNavigation", setBrushControlPos);
