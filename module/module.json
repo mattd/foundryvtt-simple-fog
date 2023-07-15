@@ -2,7 +2,7 @@
     "id": "simplefog",
     "title": "Simplefog",
     "description": "Manually draw fog of war in FoundryVTT.",
-    "version": "11.0.3",
+    "version": "11.0.4",
     "authors": [
         {
             "name": "Vance Cole",
@@ -126,9 +126,9 @@
     },
     "manifestPlusVersion": "1.2.1",
     "url": "https://github.com/mattd/foundryvtt-simplefog",
-    "manifest": "https://raw.githubusercontent.com/mattd/foundryvtt-simplefog/v11.0.3/module/module.json",
-    "download": "https://github.com/mattd/foundryvtt-simplefog/releases/download/v11.0.3/build.zip",
-    "readme": "https://github.com/mattd/foundryvtt-simplefog/blob/v11.0.3/README.md",
+    "manifest": "https://raw.githubusercontent.com/mattd/foundryvtt-simplefog/v11.0.4/module/module.json",
+    "download": "https://github.com/mattd/foundryvtt-simplefog/releases/download/v11.0.4/build.zip",
+    "readme": "https://github.com/mattd/foundryvtt-simplefog/blob/v11.0.4/README.md",
     "bugs": "https://github.com/mattd/foundryvtt-simplefog/issues",
     "allowBugReporter": true,
     "relationships": {

@@ -42,4 +42,4 @@ Allows you to set various options which affect the entire layer for the current 
 This package is under an [MIT license](LICENSE) and the [Foundry Virtual Tabletop Limited License Agreement for module development](https://foundryvtt.com/article/license/).
 
 ## Credit
-This is a _private use_ fork of SimpleFog, originally created by Vance and maintained by League of Foundry Developers. This version of Simplefog is a repackaged version of the League's fork for personal use by me, Matt Dawson. Packaging has been simplified in this for to make maintenance easier over the long term. But that said: rely upon this version at your own risk.
+This is a _private use_ fork of Simplefog, originally created by Vance and maintained by League of Foundry Developers. This version of Simplefog is a repackaged version of the League's fork for personal use by me, Matt Dawson. Packaging has been simplified to make maintenance easier for me, a person that heavily relies on this plugin, over the long term. Rely upon this version at your own risk.
