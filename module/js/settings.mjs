@@ -10,7 +10,7 @@ export const registerSettings = function () {
         type: ResetSettingsDialog,
         restricted: true
     });
-    // =====================================================================
+
     // Register global module settings
     config.forEach(cfg => {
         game.settings.register("simplefog", cfg.name, cfg.data);
@@ -85,7 +85,7 @@ export const registerSettings = function () {
         type: Number,
         onChange: SimplefogLayer.refreshZIndex
     });
-    // ========================================================================
+
     game.settings.register(CONSTANTS.MODULE_NAME, "debug", {
         name: `${CONSTANTS.MODULE_NAME}.setting.debug.name`,
         hint: `${CONSTANTS.MODULE_NAME}.setting.debug.hint`,
@@ -102,6 +102,7 @@ export const registerSettings = function () {
         );
     }
 };
+
 class ResetSettingsDialog extends FormApplication {
     constructor(...args) {
         super(...args);
