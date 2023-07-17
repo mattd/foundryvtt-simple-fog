@@ -14,11 +14,6 @@ Hooks.on("renderSceneControls", onRenderSceneControls);
 Hooks.on("renderBrushControls", setBrushControlPos);
 Hooks.on("renderSceneNavigation", setBrushControlPos);
 
-Hooks.on("ready", () => {
-    canvas.simplefog.registerMouseListeners();
-    canvas.simplefog.registerKeyboardListeners();
-});
-
 Hooks.on("updateScene", (scene, data) => {
     canvas.simplefog.updateScene(scene, data);
 });

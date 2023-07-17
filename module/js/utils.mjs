@@ -146,15 +146,18 @@ export function addSimplefogControlToggleListener() {
         }
 
         let controlName = getNewControlName();
-        let toolName = game.settings.get("simplefog", "toolHotKeys");
+        let controlButton = $(
+            `li.scene-control[data-control="${controlName}"]`
+        );
 
-        $("li.scene-control[data-control=" + controlName + "]")?.click();
+        let toolName = game.settings.get("simplefog", "toolHotKeys");
+        let toolButton = $(
+            `ol.sub-controls.active li.control-tool[data-tool="${toolName}"]`
+        );
+
+        controlButton?.click();
         setTimeout(function () {
-            $(
-                "ol.sub-controls.active li.control-tool[data-tool=" +
-                    toolName +
-                    "]"
-            )?.click();
+            toolButton?.click();
         }, 500);
     });
 }
