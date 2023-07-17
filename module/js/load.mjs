@@ -50,4 +50,7 @@ export const onReady = async () => {
 
     addSimplefogControlToggleListener();
     addSimplefogOpacityToggleListener();
+
+    canvas.simplefog.registerMouseListeners();
+    canvas.simplefog.registerKeyboardListeners();
 };
