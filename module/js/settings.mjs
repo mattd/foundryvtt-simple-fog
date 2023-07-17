@@ -19,7 +19,10 @@ export const registerSettings = function () {
     // Register global config settings
     game.settings.register("simplefog", "confirmFogDisable", {
         name: "Confirm Disabling of Scene Simplefog",
-        hint: "When enabled, a confirmation dialog will be displayed before Simplefog can be toggled off for a scene",
+        hint: `
+            When enabled, a confirmation dialog will be displayed before
+            Simplefog can be toggled off for a scene
+        `,
         scope: "world",
         config: true,
         default: true,
@@ -27,7 +30,10 @@ export const registerSettings = function () {
     });
     game.settings.register("simplefog", "autoEnableSceneFog", {
         name: "Auto Enable Scene Fog",
-        hint: "When enabled, Simplefog will automatically be enabled for a scene when it is first created.",
+        hint: `
+            When enabled, Simplefog will automatically be enabled for a scene
+            when it is first created.
+        `,
         scope: "world",
         config: true,
         default: true,
@@ -35,7 +41,10 @@ export const registerSettings = function () {
     });
     game.settings.register("simplefog", "enableHotKeys", {
         name: "Enable Simplefog Hotkeys",
-        hint: "When enabled, you will be able to quickly swap to the Simplefog control by using Ctrl+S and toggle the opacity using the hotkey 'T'",
+        hint: `
+            When enabled, you will be able to quickly swap to the Simplefog
+            control by using Ctrl+S and toggle the opacity using the hotkey 'T'
+        `,
         scope: "world",
         config: true,
         default: false,
@@ -43,7 +52,10 @@ export const registerSettings = function () {
     });
     game.settings.register("simplefog", "toolHotKeys", {
         name: "Hotkey Tool",
-        hint: "When Hotkeys is enabled, define which tool will be selected by using Ctrl+S",
+        hint: `
+            When Hotkeys is enabled, define which tool will be selected by using
+            Ctrl+S
+        `,
         scope: "world",
         config: true,
         default: "brush",
@@ -58,7 +70,15 @@ export const registerSettings = function () {
     });
     game.settings.register("simplefog", "zIndex", {
         name: "Simplefog Z-Index",
-        hint: "The z-index determines the order in which various layers are rendered within the Foundry canvas.  A higher number will be rendered on top of lower numbered layers (and the objects on that layer).  This allows for the adjustment of the z-index to allow for Simple Fog to be rendered above/below other layers; particularly ones added by other modules. Going below 200 will intermingle with Foundry layers such as the foreground image (200), tokens (100), etc...  (Default: 220)",
+        hint: `
+            The z-index determines the order in which various layers are
+            rendered within the Foundry canvas. A higher number will be rendered
+            on top of lower numbered layers (and the objects on that layer).
+            This allows for the adjustment of the z-index to allow for Simplefog
+            to be rendered above/below other layers; particularly ones added by
+            other modules. Going below 200 will intermingle with Foundry layers
+            such as the foreground image (200), tokens (100), etc. (Default:220)
+        `,
         scope: "world",
         config: true,
         default: 220,
@@ -130,18 +150,15 @@ async function applyDefaultSettings() {
     }
 }
 
-function defaultSettings(apply = false) {
-    return {
-        // TODO: this is often useful for maintaining hidden settings between versions
-    };
-}
-
 function otherSettings(apply = false) {
     return {
         // Register global config settings
         confirmFogDisable: {
             name: "Confirm Disabling of Scene Simplefog",
-            hint: "When enabled, a confirmation dialog will be displayed before Simplefog can be toggled off for a scene",
+            hint: `
+                When enabled, a confirmation dialog will be displayed before
+                Simplefog can be toggled off for a scene
+            `,
             scope: "world",
             config: true,
             default: true,
@@ -149,7 +166,10 @@ function otherSettings(apply = false) {
         },
         autoEnableSceneFog: {
             name: "Auto Enable Scene Fog",
-            hint: "When enabled, Simplefog will automatically be enabled for a scene when it is first created.",
+            hint: `
+                When enabled, Simplefog will automatically be enabled for a
+                scene when it is first created.
+            `,
             scope: "world",
             config: true,
             default: true,
@@ -157,7 +177,11 @@ function otherSettings(apply = false) {
         },
         enableHotKeys: {
             name: "Enable Simplefog Hotkeys",
-            hint: "When enabled, you will be able to quickly swap to the Simplefog control by using Ctrl+S and toggle the opacity using the hotkey 'T'",
+            hint: `
+                When enabled, you will be able to quickly swap to the Simplefog
+                control by using Ctrl+S and toggle the opacity using the hotkey
+                'T'
+            `,
             scope: "world",
             config: true,
             default: false,
@@ -165,7 +189,10 @@ function otherSettings(apply = false) {
         },
         toolHotKeys: {
             name: "Hotkey Tool",
-            hint: "When Hotkeys is enabled, define which tool will be selected by using Ctrl+S",
+            hint: `
+                When Hotkeys is enabled, define which tool will be selected by
+                using Ctrl+S
+            `,
             scope: "world",
             config: true,
             default: "brush",
@@ -180,7 +207,16 @@ function otherSettings(apply = false) {
         },
         zIndex: {
             name: "Simplefog Z-Index",
-            hint: "The z-index determines the order in which various layers are rendered within the Foundry canvas.  A higher number will be rendered on top of lower numbered layers (and the objects on that layer).  This allows for the adjustment of the z-index to allow for Simple Fog to be rendered above/below other layers; particularly ones added by other modules. Going below 200 will intermingle with Foundry layers such as the foreground image (200), tokens (100), etc...  (Default: 220)",
+            hint: `
+                The z-index determines the order in which various layers are
+                rendered within the Foundry canvas. A higher number will be
+                rendered on top of lower numbered layers (and the objects on
+                that layer). This allows for the adjustment of the z-index to
+                allow for Simple Fog to be rendered above/below other layers;
+                particularly ones added by other modules. Going below 200 will
+                intermingle with Foundry layers such as the foreground image
+                (200), tokens (100), etc. (Default: 220)
+            `,
             scope: "world",
             config: true,
             default: 220,
