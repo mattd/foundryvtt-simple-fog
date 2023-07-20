@@ -33,12 +33,11 @@
     "SIMPLEFOG.visibilitySettings": "Ajustes de visibilidad",
     "SIMPLEFOG.enableAutovis": "Habilitar visibilidad automática",
     "SIMPLEFOG.enableForGM": "Habilitar para el GM",
-    "SIMPLEFOG.enableAutoFog": "Habilitar la niebla automáticamente para las nuevas escenas",
     "SIMPLEFOG.visThreshold": "Umbral de visibilidad",
     "SIMPLEFOG.saveAsDef": "Guardar como por defecto los ajustes actuales",
     "SIMPLEFOG.ok": "OK",
-    "SIMPLEFOG.sf": "Simple Fog",
-    "SIMPLEFOG.onoff": "Habilitar/deshabilitar Simple Fog",
+    "SIMPLEFOG.sf": "Simplefog",
+    "SIMPLEFOG.onoff": "Habilitar/deshabilitar Simplefog",
 
     "SIMPLEFOG.brushTool": "Herramienta pincel",
     "SIMPLEFOG.gridTool": "Herramienta rejilla",
@@ -48,26 +47,20 @@
     "SIMPLEFOG.sceneConfig": "Configuración de la escena",
     "SIMPLEFOG.reset": "Reiniciar niebla",
     "SIMPLEFOG.confirmReset": "¿Está seguro? Se reiniciará la niebla de guerra",
-    "SIMPLEFOG.autoFogSettings": "Ajustes de niebla automática",
-    "SIMPLEFOG.autoFogNotes": "Cuando se activa y se guarda por defecto, la niebla se generará automáticamente cuando cree la escena. Por favor, active esta opción y pulse 'Guardar como por defecto los ajustes actuales' para habilitarlo. Realice el mismo proceso, pero al contrario, para deshabilitarlo",
 
     "SIMPLEFOG.advancedSettings": "Ajustes avanzados",
     "SIMPLEFOG.configurableZindex": "Índice Z de niebla simple",
     "SIMPLEFOG.configurableZindexNotes": "El índice z determina el orden en el que se representan varias capas dentro del lienzo de Foundry. Se representará un número más alto sobre las capas con números más bajos (y los objetos en esa capa). Esto permite el ajuste del índice z para permitir que Simple Fog se represente por encima o por debajo de otras capas; particularmente los agregados por otros módulos. Ir por debajo de 200 se entremezclará con las capas de Foundry, como la imagen de primer plano (200), tokens (100), etc. (Predeterminado: 220)",
 
-    "SIMPLEFOG.confirmDisablingFogSettings": "Confirmar la desactivación de la niebla simple",
     "SIMPLEFOG.confirmDisablingFog": "Habilite la confirmación para deshabilitar la niebla simple.",
     "SIMPLEFOG.confirmDisablingFogNotes": "Al deshabilitar niebla para una escena, presente un cuadro de diálogo para confirmar la desactivación antes de hacerlo.",
     "SIMPLEFOG.confirmDisableFog": "¿Estás seguro de que quieres desactivar Simple Fog para esta escena?",
     "SIMPLEFOG.disableFog": "Desactivar niebla",
 
-    "SIMPLEFOG.hotkeySettings": "Configuración de teclas de acceso rápido",
     "SIMPLEFOG.enableHotkeys": "Habilitar teclas de acceso rápido",
     "SIMPLEFOG.hotkeyNotes": "Cuando esté habilitado, podrá cambiar rápidamente al control de niebla simple usando Ctrl + S y alternar la opacidad usando la tecla de acceso directo 'T'",
-    "SIMPLEFOG.hotKeyToolDesc": "Herramienta de teclas de acceso directo",
-    "SIMPLEFOG.hotKeyToolNotes": "Determine qué herramienta se seleccionará cuando se active la tecla de acceso directo.",
+    "SIMPLEFOG.hotkeyTool": "Herramienta de teclas de acceso directo",
+    "SIMPLEFOG.hotkeyToolNotes": "Determine qué herramienta se seleccionará cuando se active la tecla de acceso directo.",
 
-    "SIMPLEFOG.autoVisNotes": "Cuando se activa, la visibilidad automática mostrará/ocultará los iconos en base al nivel de opacidad de la niebla en su localización y el umbral que se especifique. El color del pincel cambia a verde/rojo para indicar si el token es visible",
-
-    "SIMPLEFOG.migration2Notification": "<b>Migración de datos de Simple Fog</b><p>Los datos de Simple Fog se han migrado a un formato compatible con v3. Se recomienda <b>MUY</b> revisar todas las escenas y la visibilidad de la niebla, tanto desde la vista del DJ como del jugador, antes de mostrar la escena a los jugadores."
+    "SIMPLEFOG.autoVisNotes": "Cuando se activa, la visibilidad automática mostrará/ocultará los iconos en base al nivel de opacidad de la niebla en su localización y el umbral que se especifique. El color del pincel cambia a verde/rojo para indicar si el token es visible"
 }

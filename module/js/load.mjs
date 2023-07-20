@@ -5,7 +5,6 @@ import {
     addSimplefogOpacityToggleListener
 } from "./utils.mjs";
 import SimplefogLayer from "../classes/SimplefogLayer.mjs";
-import SimplefogMigrations from "../classes/SimplefogMigrations.mjs";
 import SimplefogHUDControlLayer from "../classes/SimplefogHUDControlLayer.mjs";
 
 export const onInit = () => {
@@ -37,9 +36,6 @@ export const onInit = () => {
 };
 
 export const onReady = async () => {
-    // Check if any migrations need to be performed
-    SimplefogMigrations.check();
-
     // Fix simplefog zIndex
     canvas.simplefog.refreshZIndex();
 

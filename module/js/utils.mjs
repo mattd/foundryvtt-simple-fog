@@ -145,18 +145,18 @@ export function addSimplefogControlToggleListener() {
             return;
         }
 
-        let controlName = getNewControlName();
-        let controlButton = $(
-            `li.scene-control[data-control="${controlName}"]`
-        );
-
-        let toolName = game.settings.get("simplefog", "toolHotKeys");
-        let toolButton = $(
-            `ol.sub-controls.active li.control-tool[data-tool="${toolName}"]`
-        );
+        const controlName = getNewControlName();
+        const controlButton = $(`
+            li.scene-control[data-control="${controlName}"]
+        `);
+        const toolName = game.settings.get("simplefog", "hotkeyTool");
 
         controlButton?.click();
         setTimeout(function () {
+            const toolButton = $(`
+                ol.sub-controls.active
+                li.control-tool[data-tool="${toolName}"]
+            `);
             toolButton?.click();
         }, 500);
     });
@@ -166,7 +166,7 @@ export function addSimplefogControlToggleListener() {
  * @returns bool
  */
 function areHotkeysEnabled() {
-    return game.settings.get("simplefog", "enableHotKeys");
+    return game.settings.get("simplefog", "enableHotkeys");
 }
 
 /**
@@ -182,7 +182,7 @@ function toggleControls(event) {
  * @returns bool
  */
 function isOnCanvas(event) {
-    let $path = $(event.path[0]);
+    let $path = $(event.composedPath()[0]);
     let allowedClasses = ["vtt", "game"];
 
     for (let allowedClass of allowedClasses) {

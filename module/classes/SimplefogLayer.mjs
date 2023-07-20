@@ -29,7 +29,7 @@ export default class SimplefogLayer extends MaskLayer {
             autoVisibility: false,
             autoVisGM: false,
             vThreshold: 1,
-            hotKeyTool: "Brush"
+            hotkeyTool: "Brush"
         });
 
         // Canvas expects the options.name property to be set
