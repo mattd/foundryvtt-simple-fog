@@ -9,7 +9,7 @@ export const onGetSceneControlButtons = function (controls) {
     simpleFogLogDebug("controls.getSceneControlButtons");
     if (!game.user.isGM) return;
     controls.push({
-        name: "Simple Fog",
+        name: "simpleFog",
         title: game.i18n.localize("SimpleFog.sf"),
         icon: "fas fa-cloud",
         layer: "simpleFog",
