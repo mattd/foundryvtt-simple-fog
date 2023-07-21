@@ -1,19 +1,19 @@
-import SimplefogLayer from "../classes/SimplefogLayer.mjs";
+import SimpleFogLayer from "../classes/SimpleFogLayer.mjs";
 
 export const registerSettings = function () {
-    game.settings.register("simplefog", "confirmFogDisable", {
-        name: game.i18n.localize("SIMPLEFOG.confirmDisablingFog"),
-        hint: game.i18n.localize("SIMPLEFOG.confirmDisablingFogNotes"),
+    game.settings.register("simple-fog", "confirmFogDisable", {
+        name: game.i18n.localize("SimpleFog.confirmDisablingFog"),
+        hint: game.i18n.localize("SimpleFog.confirmDisablingFogNotes"),
         scope: "world",
         config: true,
         default: true,
         type: Boolean
     });
-    game.settings.register("simplefog", "autoEnableSceneFog", {
+    game.settings.register("simple-fog", "autoEnableSceneFog", {
         // TODO: Acquire and integrate translations.
         name: "Auto Enable Scene Fog",
         hint: `
-            When enabled, Simplefog will automatically be enabled for a scene
+            When enabled, Simple Fog will automatically be enabled for a scene
             when it is first created.
         `,
         scope: "world",
@@ -21,17 +21,17 @@ export const registerSettings = function () {
         default: true,
         type: Boolean
     });
-    game.settings.register("simplefog", "enableHotkeys", {
-        name: game.i18n.localize("SIMPLEFOG.enableHotkeys"),
-        hint: game.i18n.localize("SIMPLEFOG.hotkeyNotes"),
+    game.settings.register("simple-fog", "enableHotkeys", {
+        name: game.i18n.localize("SimpleFog.enableHotkeys"),
+        hint: game.i18n.localize("SimpleFog.hotkeyNotes"),
         scope: "world",
         config: true,
         default: false,
         type: Boolean
     });
-    game.settings.register("simplefog", "hotkeyTool", {
-        name: game.i18n.localize("SIMPLEFOG.hotkeyTool"),
-        hint: game.i18n.localize("SIMPLEFOG.hotkeyToolNotes"),
+    game.settings.register("simple-fog", "hotkeyTool", {
+        name: game.i18n.localize("SimpleFog.hotkeyTool"),
+        hint: game.i18n.localize("SimpleFog.hotkeyToolNotes"),
         scope: "world",
         config: true,
         default: "brush",
@@ -44,20 +44,20 @@ export const registerSettings = function () {
             ellipse: "Ellipse"
         }
     });
-    game.settings.register("simplefog", "zIndex", {
-        name: game.i18n.localize("SIMPLEFOG.configurableZindex"),
-        hint: game.i18n.localize("SIMPLEFOG.configurableZindexNotes"),
+    game.settings.register("simple-fog", "zIndex", {
+        name: game.i18n.localize("SimpleFog.configurableZindex"),
+        hint: game.i18n.localize("SimpleFog.configurableZindexNotes"),
         scope: "world",
         config: true,
         default: 220,
         type: Number,
-        onChange: SimplefogLayer.refreshZIndex
+        onChange: SimpleFogLayer.refreshZIndex
     });
-    game.settings.register("simplefog", "debug", {
+    game.settings.register("simple-fog", "debug", {
         // TODO: Acquire and integrate translations.
         name: "Debug Mode",
         hint: `
-            When enabled, Simplefog will log additional debug information to the
+            When enabled, Simple Fog will log additional debug information to the
             console.
         `,
         scope: "client",

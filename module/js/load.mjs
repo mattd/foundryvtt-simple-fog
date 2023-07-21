@@ -1,34 +1,34 @@
 import { registerSettings } from "./settings.mjs";
 import {
-    simplefogLog,
-    addSimplefogControlToggleListener,
-    addSimplefogOpacityToggleListener
+    simpleFogLog,
+    addSimpleFogControlToggleListener,
+    addSimpleFogOpacityToggleListener
 } from "./utils.mjs";
-import SimplefogLayer from "../classes/SimplefogLayer.mjs";
-import SimplefogHUDControlLayer from "../classes/SimplefogHUDControlLayer.mjs";
+import SimpleFogLayer from "../classes/SimpleFogLayer.mjs";
+import SimpleFogHUDControlLayer from "../classes/SimpleFogHUDControlLayer.mjs";
 
 export const onInit = () => {
-    simplefogLog("Initializing simplefog", true);
+    simpleFogLog("Initializing Simple Fog", true);
 
     registerSettings();
 
-    CONFIG.Canvas.layers.simplefog = {
+    CONFIG.Canvas.layers.simpleFog = {
         group: "interface",
-        layerClass: SimplefogLayer
+        layerClass: SimpleFogLayer
     };
-    CONFIG.Canvas.layers.simplefogHUDControls = {
+    CONFIG.Canvas.layers.simpleFogHUDControls = {
         group: "interface",
-        layerClass: SimplefogHUDControlLayer
+        layerClass: SimpleFogHUDControlLayer
     };
 
-    Object.defineProperty(canvas, "simplefog", {
-        value: new SimplefogLayer(),
+    Object.defineProperty(canvas, "simpleFog", {
+        value: new SimpleFogLayer(),
         configurable: true,
         writable: true,
         enumerable: false
     });
-    Object.defineProperty(canvas, "simplefogHUDControls", {
-        value: new SimplefogHUDControlLayer(),
+    Object.defineProperty(canvas, "simpleFogHUDControls", {
+        value: new SimpleFogHUDControlLayer(),
         configurable: true,
         writable: true,
         enumerable: false
@@ -36,17 +36,17 @@ export const onInit = () => {
 };
 
 export const onReady = async () => {
-    // Fix simplefog zIndex
-    canvas.simplefog.refreshZIndex();
+    // Fix Simple Fog zIndex
+    canvas.simpleFog.refreshZIndex();
 
     // Move object hud to tokens layer
-    game.canvas.controls.hud.setParent(game.canvas.simplefogHUDControls);
+    game.canvas.controls.hud.setParent(game.canvas.simpleFogHUDControls);
 
     canvas.perception.refresh();
 
-    addSimplefogControlToggleListener();
-    addSimplefogOpacityToggleListener();
+    addSimpleFogControlToggleListener();
+    addSimpleFogOpacityToggleListener();
 
-    canvas.simplefog.registerMouseListeners();
-    canvas.simplefog.registerKeyboardListeners();
+    canvas.simpleFog.registerMouseListeners();
+    canvas.simpleFog.registerKeyboardListeners();
 };

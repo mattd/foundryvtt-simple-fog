@@ -1,6 +1,6 @@
 import { webToHex, hexToWeb } from "../js/utils.mjs";
 
-export default class SimplefogConfig extends FormApplication {
+export default class SimpleFogConfig extends FormApplication {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["form"],
@@ -10,9 +10,9 @@ export default class SimplefogConfig extends FormApplication {
             popOut: true,
             editable: game.user.isGM,
             width: 500,
-            template: "modules/simplefog/templates/scene-config.html",
+            template: "modules/simple-fog/templates/scene-config.html",
             id: "simplefog-scene-config",
-            title: game.i18n.localize("Simplefog Options")
+            title: game.i18n.localize("Simple Fog Options")
         });
     }
 
@@ -28,42 +28,42 @@ export default class SimplefogConfig extends FormApplication {
         // Return data to the template
         return {
             gmColorAlpha: Math.round(
-                canvas.simplefog.getSetting("gmColorAlpha") * 100
+                canvas.simpleFog.getSetting("gmColorAlpha") * 100
             ),
-            gmColorTint: hexToWeb(canvas.simplefog.getSetting("gmColorTint")),
+            gmColorTint: hexToWeb(canvas.simpleFog.getSetting("gmColorTint")),
             playerColorAlpha: Math.round(
-                canvas.simplefog.getSetting("playerColorAlpha") * 100
+                canvas.simpleFog.getSetting("playerColorAlpha") * 100
             ),
             playerColorTint: hexToWeb(
-                canvas.simplefog.getSetting("playerColorTint")
+                canvas.simpleFog.getSetting("playerColorTint")
             ),
-            transition: canvas.simplefog.getSetting("transition"),
-            transitionSpeed: canvas.simplefog.getSetting("transitionSpeed"),
-            blurEnable: canvas.simplefog.getSetting("blurEnable"),
-            blurRadius: canvas.simplefog.getSetting("blurRadius"),
-            blurQuality: canvas.simplefog.getSetting("blurQuality"),
-            autoVisibility: canvas.simplefog.getSetting("autoVisibility"),
-            autoVisGM: canvas.simplefog.getSetting("autoVisGM"),
+            transition: canvas.simpleFog.getSetting("transition"),
+            transitionSpeed: canvas.simpleFog.getSetting("transitionSpeed"),
+            blurEnable: canvas.simpleFog.getSetting("blurEnable"),
+            blurRadius: canvas.simpleFog.getSetting("blurRadius"),
+            blurQuality: canvas.simpleFog.getSetting("blurQuality"),
+            autoVisibility: canvas.simpleFog.getSetting("autoVisibility"),
+            autoVisGM: canvas.simpleFog.getSetting("autoVisGM"),
             vThreshold: Math.round(
-                canvas.simplefog.getSetting("vThreshold") * 100
+                canvas.simpleFog.getSetting("vThreshold") * 100
             ),
-            fogImageOverlayFilePath: canvas.simplefog.getSetting(
+            fogImageOverlayFilePath: canvas.simpleFog.getSetting(
                 "fogImageOverlayFilePath"
             ),
             fogImageOverlayGMAlpha: Math.round(
-                canvas.simplefog.getSetting("fogImageOverlayGMAlpha") * 100
+                canvas.simpleFog.getSetting("fogImageOverlayGMAlpha") * 100
             ),
             fogImageOverlayPlayerAlpha: Math.round(
-                canvas.simplefog.getSetting("fogImageOverlayPlayerAlpha") * 100
+                canvas.simpleFog.getSetting("fogImageOverlayPlayerAlpha") * 100
             ),
-            fogImageOverlayZIndex: canvas.simplefog.getSetting(
+            fogImageOverlayZIndex: canvas.simpleFog.getSetting(
                 "fogImageOverlayZIndex"
             ),
             fogImageOverlayZIndexOptions: {
                 4000: "Color Tint Above Overlay Image",
                 6000: "Overlay Image Above Color Tint"
             },
-            versionNotification: canvas.simplefog.getSetting(
+            versionNotification: canvas.simpleFog.getSetting(
                 "versionNotification"
             )
         };
@@ -100,17 +100,17 @@ export default class SimplefogConfig extends FormApplication {
                 val = webToHex(val);
             }
             // Save settings to scene
-            await canvas.simplefog.setSetting(key, val);
+            await canvas.simpleFog.setSetting(key, val);
             // If saveDefaults button clicked, also save to user's defaults
             if (event.submitter?.name === "saveDefaults") {
-                canvas.simplefog.setUserSetting(key, val);
+                canvas.simpleFog.setUserSetting(key, val);
             }
         });
 
         // If save button was clicked, close app
         if (event.submitter?.name === "submit") {
             Object.values(ui.windows).forEach(val => {
-                if (val.id === "simplefog-scene-config") val.close();
+                if (val.id === "simple-fog-scene-config") val.close();
             });
         }
 

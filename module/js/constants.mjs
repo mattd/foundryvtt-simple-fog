@@ -1,6 +1,5 @@
 const CONSTANTS = {
-    MODULE_NAME: "simplefog",
-    PATH: `modules/simplefog/`
+    MODULE_NAME: "simple-fog"
 };
 CONSTANTS.PATH = `modules/${CONSTANTS.MODULE_NAME}/`;
 export default CONSTANTS;

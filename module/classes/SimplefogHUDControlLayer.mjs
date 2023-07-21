@@ -3,7 +3,7 @@
  * Used as layer directly below simplefog for object HUD controls
  */
 
-export default class SimplefogHUDControlLayer extends InteractionLayer {
+export default class SimpleFogHUDControlLayer extends InteractionLayer {
     constructor(layername) {
         super();
     }

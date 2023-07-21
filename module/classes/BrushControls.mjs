@@ -9,9 +9,9 @@ export default class BrushControls extends FormApplication {
             submitOnClose: true,
             popOut: false,
             editable: game.user.isGM,
-            template: "modules/simplefog/templates/brush-controls.html",
+            template: "modules/simple-fog/templates/brush-controls.html",
             id: "filter-config",
-            title: game.i18n.localize("Simplefog Options")
+            title: game.i18n.localize("Simple Fog Options")
         });
     }
 
@@ -24,9 +24,9 @@ export default class BrushControls extends FormApplication {
     getData() {
         // Return data to the template
         return {
-            brushSize: canvas.simplefog.getUserSetting("brushSize"),
+            brushSize: canvas.simpleFog.getUserSetting("brushSize"),
             brushOpacity: hexToPercent(
-                canvas.simplefog.getUserSetting("brushOpacity")
+                canvas.simpleFog.getUserSetting("brushOpacity")
             )
         };
     }
@@ -40,11 +40,11 @@ export default class BrushControls extends FormApplication {
      * @private
      */
     async _updateObject(event, formData) {
-        canvas.simplefog.setUserSetting("brushSize", formData.brushSize);
-        await canvas.simplefog.setUserSetting(
+        canvas.simpleFog.setUserSetting("brushSize", formData.brushSize);
+        await canvas.simpleFog.setUserSetting(
             "brushOpacity",
             percentToHex(formData.brushOpacity)
         );
-        canvas.simplefog.setPreviewTint();
+        canvas.simpleFog.setPreviewTint();
     }
 }

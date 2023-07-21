@@ -9,21 +9,21 @@ import CONSTANTS from "./constants.mjs";
  * @param data {String | Object} Output to be dumped
  * @param force {Boolean}        Log output even if CONFIG.debug.simplefog = false
  */
-export function simplefogLog(data, force = false) {
+export function simpleFogLog(data, force = false) {
     try {
         const isDebugging = game.modules
             .get("_dev-mode")
             ?.api?.getPackageDebugValue(CONSTANTS.MODULE_NAME);
         if (force || isDebugging) {
-            if (typeof data === "string") console.log(`Simplefog | ${data}`);
-            else console.log("Simplefog |", data);
+            if (typeof data === "string") console.log(`SimpleFog | ${data}`);
+            else console.log("SimpleFog |", data);
         }
     } catch (e) {}
 }
 
-export function simplefogLogDebug(...args) {
+export function simpleFogLogDebug(...args) {
     if (game.settings.get(CONSTANTS.MODULE_NAME, "debug")) {
-        console.debug("Simplefog-DEBUG |", ...args);
+        console.debug("SimpleFog-DEBUG |", ...args);
     }
 }
 
@@ -135,7 +135,7 @@ export function readPixel(target, x = 0, y = 0) {
     return pixel;
 }
 
-export function addSimplefogControlToggleListener() {
+export function addSimpleFogControlToggleListener() {
     window.addEventListener("keydown", event => {
         if (
             !areHotkeysEnabled() ||
@@ -149,7 +149,7 @@ export function addSimplefogControlToggleListener() {
         const controlButton = $(`
             li.scene-control[data-control="${controlName}"]
         `);
-        const toolName = game.settings.get("simplefog", "hotkeyTool");
+        const toolName = game.settings.get("simple-fog", "hotkeyTool");
 
         controlButton?.click();
         setTimeout(function () {
@@ -166,7 +166,7 @@ export function addSimplefogControlToggleListener() {
  * @returns bool
  */
 function areHotkeysEnabled() {
-    return game.settings.get("simplefog", "enableHotkeys");
+    return game.settings.get("simple-fog", "enableHotkeys");
 }
 
 /**
@@ -198,14 +198,14 @@ function isOnCanvas(event) {
  * @returns string
  */
 function getNewControlName() {
-    return isActiveControl() ? "token" : "simplefog";
+    return isActiveControl() ? "token" : "simpleFog";
 }
 
 /**
  * @returns bool
  */
 function isActiveControl() {
-    return getActiveControlName() === "simplefog";
+    return getActiveControlName() === "simpleFog";
 }
 
 /**
@@ -215,7 +215,7 @@ function getActiveControlName() {
     return ui.controls.activeControl;
 }
 
-export function addSimplefogOpacityToggleListener() {
+export function addSimpleFogOpacityToggleListener() {
     window.addEventListener("keydown", event => {
         if (
             !areHotkeysEnabled() ||
@@ -242,7 +242,7 @@ function toggleSliderAndSubmitForm() {
     let $slider = $("input[name=brushOpacity]");
     let brushOpacity = $slider.val();
     $slider.val(brushOpacity === "100" ? 0 : 100);
-    $("form#simplefog-brush-controls-form").submit();
+    $("form#simple-fog-brush-controls-form").submit();
 }
 
 export function dmToGM(message) {

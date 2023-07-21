@@ -15,13 +15,13 @@ Hooks.on("renderBrushControls", setBrushControlPos);
 Hooks.on("renderSceneNavigation", setBrushControlPos);
 
 Hooks.on("updateScene", (scene, data) => {
-    canvas.simplefog.updateScene(scene, data);
+    canvas.simpleFog.updateScene(scene, data);
 });
 
 Hooks.once("canvasInit", () => {
-    canvas.simplefog.canvasInit();
+    canvas.simpleFog.canvasInit();
 });
 
 Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
-    registerPackageDebugFlag("simplefog");
+    registerPackageDebugFlag("SimpleFog");
 });

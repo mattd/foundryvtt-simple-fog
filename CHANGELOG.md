@@ -1,4 +1,4 @@
-# Simplefog Change Log
+# Simple Fog Change Log
 
 ### 11.0.0: Drop v10 Support, Reduce Complexity
 Jul 11, 2023

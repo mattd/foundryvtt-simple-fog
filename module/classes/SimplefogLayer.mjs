@@ -8,14 +8,14 @@ import { Layout } from "../libs/hexagons.mjs";
 import {
     hexObjsToArr,
     hexToPercent,
-    simplefogLog,
-    simplefogLogDebug
+    simpleFogLog,
+    simpleFogLogDebug
 } from "../js/utils.mjs";
 
 export default class SimplefogLayer extends MaskLayer {
     constructor() {
-        simplefogLogDebug("SimplefogLayer.constructor");
-        super("simplefog");
+        simpleFogLogDebug("SimpleFogLayer.constructor");
+        super("simpleFog");
 
         this.DEFAULTS = Object.assign(this.DEFAULTS, {
             transition: true,
@@ -37,7 +37,7 @@ export default class SimplefogLayer extends MaskLayer {
     }
 
     initSimplefog() {
-        simplefogLogDebug("SimplefogLayer.init");
+        simpleFogLogDebug("SimpleFogLayer.init");
         // Preview brush objects
         this.boxPreview = this.brush({
             shape: this.BRUSH_TYPES.BOX,
@@ -85,7 +85,7 @@ export default class SimplefogLayer extends MaskLayer {
     }
 
     canvasInit() {
-        simplefogLogDebug("SimplefogLayer.canvasInit");
+        simpleFogLogDebug("SimpleFogLayer.canvasInit");
         // Set default flags if they dont exist already
         Object.keys(this.DEFAULTS).forEach(key => {
             if (!game.user.isGM) return;
@@ -238,7 +238,7 @@ export default class SimplefogLayer extends MaskLayer {
      */
     registerKeyboardListeners() {
         $(document).keydown(event => {
-            // Only react if simplefog layer is active
+            // Only react if simpleFog layer is active
             if (ui.controls.activeControl !== this.layername) return;
             // Don't react if game body isn't target
             if (!event.target.tagName === "BODY") return;
@@ -262,7 +262,7 @@ export default class SimplefogLayer extends MaskLayer {
      * Sets the active tool & shows preview for brush & grid tools
      */
     setActiveTool(tool) {
-        simplefogLogDebug("SimplefogLayer.setActiveTool");
+        simpleFogLogDebug("SimplefogLayer.setActiveTool");
         this.clearActiveTool();
         this.activeTool = tool;
         this.setPreviewTint();
@@ -772,7 +772,7 @@ export default class SimplefogLayer extends MaskLayer {
     }
 
     async draw() {
-        simplefogLogDebug("SimplefogLayer.draw");
+        simpleFogLogDebug("SimplefogLayer.draw");
         super.draw();
         this.initSimplefog();
 
