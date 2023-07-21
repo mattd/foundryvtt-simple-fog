@@ -1,4 +1,10 @@
-# Simplefog Change Log
+# Simple Fog Change Log
+
+### 11.1.0: Name Change, More Complexity Reductions, Bug Fixes
+July 21, 2023
+* Establish module-wide name consistency
+* Remove some compatibility features, including migrations
+* Various bug fixes, including hotkeys
 
 ### 11.0.0: Drop v10 Support, Reduce Complexity
 Jul 11, 2023

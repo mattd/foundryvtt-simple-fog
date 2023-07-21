@@ -1,79 +1,79 @@
-import SimplefogConfig from "../classes/SimplefogConfig.mjs";
+import SimpleFogConfig from "../classes/SimpleFogConfig.mjs";
 import BrushControls from "../classes/BrushControls.mjs";
-import { simplefogLogDebug } from "./utils.mjs";
+import { simpleFogLogDebug } from "./utils.mjs";
 
 /**
  * Add control buttons
  */
 export const onGetSceneControlButtons = function (controls) {
-    simplefogLogDebug("controls.getSceneControlButtons");
+    simpleFogLogDebug("controls.getSceneControlButtons");
     if (!game.user.isGM) return;
     controls.push({
-        name: "simplefog",
-        title: game.i18n.localize("SIMPLEFOG.sf"),
+        name: "simpleFog",
+        title: game.i18n.localize("SimpleFog.sf"),
         icon: "fas fa-cloud",
-        layer: "simplefog",
+        layer: "simpleFog",
         tools: [
             {
-                name: "simplefogtoggle",
-                title: game.i18n.localize("SIMPLEFOG.onoff"),
+                name: "simpleFogToggle",
+                title: game.i18n.localize("SimpleFog.onoff"),
                 icon: "fas fa-eye",
                 onClick: () => toggleSimpleFog(),
-                active: canvas.simplefog?.visible,
+                active: canvas.simpleFog?.visible,
                 toggle: true
             },
             {
                 name: "brush",
-                title: game.i18n.localize("SIMPLEFOG.brushTool"),
+                title: game.i18n.localize("SimpleFog.brushTool"),
                 icon: "fas fa-paint-brush"
             },
             {
                 name: "grid",
-                title: game.i18n.localize("SIMPLEFOG.gridTool"),
+                title: game.i18n.localize("SimpleFog.gridTool"),
                 icon: "fas fa-border-none"
             },
             {
                 name: "polygon",
-                title: game.i18n.localize("SIMPLEFOG.polygonTool"),
+                title: game.i18n.localize("SimpleFog.polygonTool"),
                 icon: "fas fa-draw-polygon"
             },
             {
                 name: "box",
-                title: game.i18n.localize("SIMPLEFOG.boxTool"),
+                title: game.i18n.localize("SimpleFog.boxTool"),
                 icon: "far fa-square"
             },
             {
                 name: "ellipse",
-                title: game.i18n.localize("SIMPLEFOG.ellipseTool"),
+                title: game.i18n.localize("SimpleFog.ellipseTool"),
                 icon: "far fa-circle"
             },
             {
                 name: "sceneConfig",
-                title: game.i18n.localize("SIMPLEFOG.sceneConfig"),
+                title: game.i18n.localize("SimpleFog.sceneConfig"),
                 icon: "fas fa-cog",
                 onClick: () => {
-                    new SimplefogConfig().render(true);
+                    new SimpleFogConfig().render(true);
                 },
                 button: true
             },
             {
                 name: "clearfog",
-                title: game.i18n.localize("SIMPLEFOG.reset"),
+                title: game.i18n.localize("SimpleFog.reset"),
                 icon: "fas fa-trash",
                 onClick: () => {
                     const dg = new Dialog({
-                        title: game.i18n.localize("SIMPLEFOG.reset"),
-                        content: game.i18n.localize("SIMPLEFOG.confirmReset"),
+                        title: game.i18n.localize("SimpleFog.reset"),
+                        content: game.i18n.localize("SimpleFog.confirmReset"),
                         buttons: {
                             reset: {
                                 icon: '<i class="fas fa-trash"></i>',
                                 label: "Reset",
-                                callback: () => canvas.simplefog.resetMask()
+                                callback: () => canvas.simpleFog.resetMask()
                             },
                             blank: {
                                 icon: '<i class="fas fa-eye"></i>',
                                 label: "Blank",
-                                callback: () => canvas.simplefog.blankMask()
+                                callback: () => canvas.simpleFog.blankMask()
                             },
                             cancel: {
                                 icon: '<i class="fas fa-times"></i>',
@@ -96,26 +96,26 @@ export const onGetSceneControlButtons = function (controls) {
  * and switching active brush flag
  */
 export const onRenderSceneControls = function (controls) {
-    simplefogLogDebug("controls.renderSceneControls");
+    simpleFogLogDebug("controls.renderSceneControls");
     // Switching to layer
-    if (canvas.simplefog != null) {
+    if (canvas.simpleFog != null) {
         if (
-            controls.activeControl == "simplefog" &&
+            controls.activeControl == "simpleFog" &&
             controls.activeTool != undefined
         ) {
             // Open brush tools if not already open
-            if (!$("#simplefog-brush-controls").length) {
+            if (!$("#simple-fog-brush-controls").length) {
                 new BrushControls().render(true);
             }
             // Set active tool
-            canvas.simplefog.setActiveTool(controls.activeTool);
+            canvas.simpleFog.setActiveTool(controls.activeTool);
         }
         // Switching away from layer
         else {
             // Clear active tool
-            canvas.simplefog.clearActiveTool();
+            canvas.simpleFog.clearActiveTool();
             // Remove brush tools if open
-            const bc = $("#simplefog-brush-controls")[0];
+            const bc = $("#simple-fog-brush-controls")[0];
             if (bc) bc.remove();
         }
     }
@@ -125,12 +125,12 @@ export const onRenderSceneControls = function (controls) {
  * Sets Y position of the brush controls to account for scene navigation buttons
  */
 export const setBrushControlPos = function () {
-    const brushControl = $("#simplefog-brush-controls");
+    const brushControl = $("#simple-fog-brush-controls");
     const navigation = $("#navigation");
     if (brushControl.length && navigation.length) {
         const h = navigation.height();
         brushControl.css({ top: `${h + 30}px` });
-        canvas.simplefog.setActiveTool(canvas.simplefog.activeTool);
+        canvas.simpleFog.setActiveTool(canvas.simpleFog.activeTool);
     }
 }
 
@@ -138,14 +138,14 @@ export const setBrushControlPos = function () {
  * Toggle Simple Fog
  */
 function toggleSimpleFog() {
-    simplefogLogDebug("controls.toggleSimpleFog");
+    simpleFogLogDebug("controls.toggleSimpleFog");
     if (
-        game.settings.get("simplefog", "confirmFogDisable") &&
-        canvas.simplefog.getSetting("visible")
+        game.settings.get("simple-fog", "confirmFogDisable") &&
+        canvas.simpleFog.getSetting("visible")
     ) {
         let dg = Dialog.confirm({
-            title: game.i18n.localize("SIMPLEFOG.disableFog"),
-            content: game.i18n.localize("SIMPLEFOG.confirmDisableFog"),
+            title: game.i18n.localize("SimpleFog.disableFog"),
+            content: game.i18n.localize("SimpleFog.confirmDisableFog"),
             yes: () => toggleOffSimpleFog(),
             no: () => cancelToggleSimpleFog(),
             defaultYes: false,
@@ -158,7 +158,7 @@ function toggleSimpleFog() {
 }
 
 function toggleOffSimpleFog() {
-    canvas.simplefog.toggle();
+    canvas.simpleFog.toggle();
 
     // TODO: Determine replacement for canvas.sight.refresh()
     canvas.perception.refresh();
@@ -166,7 +166,7 @@ function toggleOffSimpleFog() {
 
 function cancelToggleSimpleFog(result = undefined) {
     ui.controls.controls.find(
-        ({ name }) => name === "simplefog"
+        ({ name }) => name === "simpleFog"
     ).tools[0].active = true;
     ui.controls.render();
 }

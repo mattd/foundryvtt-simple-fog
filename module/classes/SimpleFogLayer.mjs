@@ -8,14 +8,14 @@ import { Layout } from "../libs/hexagons.mjs";
 import {
     hexObjsToArr,
     hexToPercent,
-    simplefogLog,
-    simplefogLogDebug
+    simpleFogLog,
+    simpleFogLogDebug
 } from "../js/utils.mjs";
 
-export default class SimplefogLayer extends MaskLayer {
+export default class SimpleFogLayer extends MaskLayer {
     constructor() {
-        simplefogLogDebug("SimplefogLayer.constructor");
-        super("simplefog");
+        simpleFogLogDebug("SimpleFogLayer.constructor");
+        super();
 
         this.DEFAULTS = Object.assign(this.DEFAULTS, {
             transition: true,
@@ -29,7 +29,7 @@ export default class SimplefogLayer extends MaskLayer {
             autoVisibility: false,
             autoVisGM: false,
             vThreshold: 1,
-            hotKeyTool: "Brush"
+            hotkeyTool: "Brush"
         });
 
         // Canvas expects the options.name property to be set
@@ -37,7 +37,7 @@ export default class SimplefogLayer extends MaskLayer {
     }
 
     initSimplefog() {
-        simplefogLogDebug("SimplefogLayer.init");
+        simpleFogLogDebug("SimpleFogLayer.init");
         // Preview brush objects
         this.boxPreview = this.brush({
             shape: this.BRUSH_TYPES.BOX,
@@ -85,7 +85,7 @@ export default class SimplefogLayer extends MaskLayer {
     }
 
     canvasInit() {
-        simplefogLogDebug("SimplefogLayer.canvasInit");
+        simpleFogLogDebug("SimpleFogLayer.canvasInit");
         // Set default flags if they dont exist already
         Object.keys(this.DEFAULTS).forEach(key => {
             if (!game.user.isGM) return;
@@ -111,11 +111,11 @@ export default class SimplefogLayer extends MaskLayer {
         // Check if update applies to current viewed scene
         if (!scene._view) return;
         // React to visibility change
-        if (hasProperty(data, `flags.${this.layername}.visible`)) {
-            canvas[this.layername].visible = data.flags[this.layername].visible;
+        if (hasProperty(data.flags["simple-fog"], "visible")) {
+            canvas.simpleFog.visible = data.flags["simple-fog"].visible;
         }
         // React to composite history change
-        if (hasProperty(data, `flags.${this.layername}.blurEnable`)) {
+        if (hasProperty(data.flags["simple-fog"], "blurEnable")) {
             if (this.fogColorLayer !== undefined) {
                 if (this.getSetting("blurEnable")) {
                     this.fogColorLayer.filters = [this.blur];
@@ -124,18 +124,18 @@ export default class SimplefogLayer extends MaskLayer {
                 }
             }
         }
-        if (hasProperty(data, `flags.${this.layername}.blurRadius`)) {
-            canvas[this.layername].blur.blur = this.getSetting("blurRadius");
+        if (hasProperty(data.flags["simple-fog"], "blurRadius")) {
+            canvas.simpleFog.blur.blur = this.getSetting("blurRadius");
         }
         // React to composite history change
-        if (hasProperty(data, `flags.${this.layername}.blurQuality`)) {
-            canvas[this.layername].blur.quality =
+        if (hasProperty(data.flags["simple-fog"], "blurQuality")) {
+            canvas.simpleFog.blur.quality =
                 this.getSetting("blurQuality");
         }
         // React to composite history change
-        if (hasProperty(data, `flags.${this.layername}.history`)) {
-            canvas[this.layername].renderStack(
-                data.flags[this.layername].history
+        if (hasProperty(data.flags["simple-fog"], "history")) {
+            canvas.simpleFog.renderStack(
+                data.flags["simple-fog"].history
             );
 
             // TODO: Determine replacement for canvas.sight.refresh()
@@ -143,8 +143,8 @@ export default class SimplefogLayer extends MaskLayer {
         }
         // React to autoVisibility setting changes
         if (
-            hasProperty(data, `flags.${this.layername}.autoVisibility`) ||
-            hasProperty(data, `flags.${this.layername}.vThreshold`)
+            hasProperty(data.flags["simple-fog"], "autoVisibility") ||
+            hasProperty(data.flags["simple-fog"], "vThreshold")
         ) {
             // TODO: Determine replacement for canvas.sight.refresh()
             canvas.perception.refresh();
@@ -152,72 +152,71 @@ export default class SimplefogLayer extends MaskLayer {
         // React to alpha/tint changes
         if (
             !game.user.isGM &&
-            hasProperty(data, `flags.${this.layername}.playerColorAlpha`)
+            hasProperty(data.flags["simple-fog"], "playerColorAlpha")
         ) {
-            canvas[this.layername].setColorAlpha(
-                data.flags[this.layername].playerColorAlpha
+            canvas.simpleFog.setColorAlpha(
+                data.flags["simple-fog"].playerColorAlpha
             );
         }
         if (
             game.user.isGM &&
-            hasProperty(data, `flags.${this.layername}.gmColorAlpha`)
+            hasProperty(data.flags["simple-fog"], "gmColorAlpha")
         ) {
-            canvas[this.layername].setColorAlpha(
-                data.flags[this.layername].gmColorAlpha
+            canvas.simpleFog.setColorAlpha(
+                data.flags["simple-fog"].gmColorAlpha
             );
         }
         if (
             !game.user.isGM &&
-            hasProperty(data, `flags.${this.layername}.playerColorTint`)
+            hasProperty(data.flags["simple-fog"], "playerColorTint")
         ) {
-            canvas[this.layername].setColorTint(
-                data.flags[this.layername].playerColorTint
+            canvas.simpleFog.setColorTint(
+                data.flags["simple-fog"].playerColorTint
             );
         }
         if (
             game.user.isGM &&
-            hasProperty(data, `flags.${this.layername}.gmColorTint`)
+            hasProperty(data.flags["simple-fog"], "gmColorTint")
         ) {
-            canvas[this.layername].setColorTint(
-                data.flags[this.layername].gmColorTint
+            canvas.simpleFog.setColorTint(
+                data.flags["simple-fog"].gmColorTint
             );
         }
 
         // React to Image Overylay file changes
         if (
-            hasProperty(data, `flags.${this.layername}.fogImageOverlayFilePath`)
+            hasProperty(data.flags["simple-fog"], "fogImageOverlayFilePath")
         ) {
-            canvas[this.layername].setFogImageOverlayTexture(
-                data.flags[this.layername].fogImageOverlayFilePath
+            canvas.simpleFog.setFogImageOverlayTexture(
+                data.flags["simple-fog"].fogImageOverlayFilePath
             );
         } else {
-            canvas[this.layername].setFogImageOverlayTexture(undefined);
+            canvas.simpleFog.setFogImageOverlayTexture(undefined);
         }
 
         if (
             game.user.isGM &&
-            hasProperty(data, `flags.${this.layername}.fogImageOverlayGMAlpha`)
+            hasProperty(data.flags["simple-fog"], "fogImageOverlayGMAlpha")
         ) {
-            canvas[this.layername].setFogImageOverlayAlpha(
-                data.flags[this.layername].fogImageOverlayGMAlpha
+            canvas.simpleFog.setFogImageOverlayAlpha(
+                data.flags["simple-fog"].fogImageOverlayGMAlpha
             );
         }
         if (
             !game.user.isGM &&
             hasProperty(
-                data,
-                `flags.${this.layername}.fogImageOverlayPlayerAlpha`
+                data.flags["simple-fog"], "fogImageOverlayPlayerAlpha"
             )
         ) {
-            canvas[this.layername].setFogImageOverlayAlpha(
-                data.flags[this.layername].fogImageOverlayPlayerAlpha
+            canvas.simpleFog.setFogImageOverlayAlpha(
+                data.flags["simple-fog"].fogImageOverlayPlayerAlpha
             );
         }
         if (
-            hasProperty(data, `flags.${this.layername}.fogImageOverlayZIndex`)
+            hasProperty(data.flags["simple-fog"], "fogImageOverlayZIndex")
         ) {
-            canvas[this.layername].setFogImageOverlayZIndex(
-                data.flags[this.layername].fogImageOverlayZIndex
+            canvas.simpleFog.setFogImageOverlayZIndex(
+                data.flags["simple-fog"].fogImageOverlayZIndex
             );
         }
     }
@@ -238,7 +237,7 @@ export default class SimplefogLayer extends MaskLayer {
      */
     registerKeyboardListeners() {
         $(document).keydown(event => {
-            // Only react if simplefog layer is active
+            // Only react if simpleFog layer is active
             if (ui.controls.activeControl !== this.layername) return;
             // Don't react if game body isn't target
             if (!event.target.tagName === "BODY") return;
@@ -262,7 +261,7 @@ export default class SimplefogLayer extends MaskLayer {
      * Sets the active tool & shows preview for brush & grid tools
      */
     setActiveTool(tool) {
-        simplefogLogDebug("SimplefogLayer.setActiveTool");
+        simpleFogLogDebug("SimpleFogLayer.setActiveTool");
         this.clearActiveTool();
         this.activeTool = tool;
         this.setPreviewTint();
@@ -375,7 +374,7 @@ export default class SimplefogLayer extends MaskLayer {
         }
         // On right button, cancel action
         else if (e.data.button === 2) {
-            // Todo: Not sure why this doesnt trigger when drawing ellipse & box
+            // TODO: Find why this doesnt trigger when drawing ellipse & box
             if (["polygon", "box", "ellipse"].includes(this.activeTool)) {
                 this.clearActiveTool();
             }
@@ -772,7 +771,7 @@ export default class SimplefogLayer extends MaskLayer {
     }
 
     async draw() {
-        simplefogLogDebug("SimplefogLayer.draw");
+        simpleFogLogDebug("SimpleFogLayer.draw");
         super.draw();
         this.initSimplefog();
 

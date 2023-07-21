@@ -5,13 +5,12 @@
  * and replaying the mask / undo etc.
  */
 
-import { simplefogLog, simplefogLogDebug } from "../js/utils.mjs";
+import { simpleFogLog, simpleFogLogDebug } from "../js/utils.mjs";
 
 export default class MaskLayer extends InteractionLayer {
-    constructor(layername) {
+    constructor() {
         super();
         this.lock = false;
-        this.layername = layername;
         this.historyBuffer = [];
         this.pointer = 0;
         this.gridLayout = {};
@@ -46,7 +45,7 @@ export default class MaskLayer extends InteractionLayer {
             // TODO: is ugly hack still needed?
             // Ugly hack - render at very high zindex and then re-render at
             // layer init with layerZindex value
-            zIndex: game.settings.get("simplefog", "zIndex")
+            zIndex: game.settings.get("simple-fog", "zIndex")
         });
     }
 
@@ -68,12 +67,12 @@ export default class MaskLayer extends InteractionLayer {
      *                        fog color
      */
     initMask() {
-        simplefogLogDebug("MaskLayer.initMask");
+        simpleFogLogDebug("MaskLayer.initMask");
         // Check if masklayer is flagged visible
         let v = this.getSetting("visible");
         if (v === undefined) v = false;
         this.visible = v;
-        simplefogLogDebug("MaskLayer.initMask - visible", this.visible);
+        simpleFogLogDebug("MaskLayer.initMask - visible", this.visible);
 
         // The layer is the primary sprite to be displayed
         this.fogColorLayer = MaskLayer.getCanvasSprite();
@@ -147,7 +146,7 @@ export default class MaskLayer extends InteractionLayer {
      * @param skip {Boolean} Optional override to skip using animated transition
      */
     async setColorAlpha(alpha, skip = false) {
-        simplefogLogDebug("MaskLayer.setColorAlpha");
+        simpleFogLogDebug("MaskLayer.setColorAlpha");
         // If skip is false, do not transition and just set alpha immediately
         if (skip || !this.getSetting("transition")) {
             this.fogColorLayer.alpha = alpha;
@@ -188,7 +187,7 @@ export default class MaskLayer extends InteractionLayer {
     }
 
     static getMaskTexture() {
-        simplefogLogDebug("MaskLayer.getMaskTexture");
+        simpleFogLogDebug("MaskLayer.getMaskTexture");
         const d = canvas.dimensions;
         let res = 1.0;
         if (d.width * d.height > 16000 ** 2) res = 0.25;
@@ -265,25 +264,25 @@ export default class MaskLayer extends InteractionLayer {
      */
 
     getSetting(name) {
-        let setting = canvas.scene.getFlag(this.layername, name);
+        let setting = canvas.scene.getFlag("simple-fog", name);
         if (setting === undefined) setting = this.getUserSetting(name);
         if (setting === undefined) setting = this.DEFAULTS[name];
         return setting;
     }
 
     async setSetting(name, value) {
-        const v = await canvas.scene.setFlag(this.layername, name, value);
+        const v = await canvas.scene.setFlag("simple-fog", name, value);
         return v;
     }
 
     getUserSetting(name) {
-        let setting = game.user.getFlag(this.layername, name);
+        let setting = game.user.getFlag("simple-fog", name);
         if (setting === undefined) setting = this.DEFAULTS[name];
         return setting;
     }
 
     async setUserSetting(name, value) {
-        const v = await game.user.setFlag(this.layername, name, value);
+        const v = await game.user.setFlag("simple-fog", name, value);
         return v;
     }
 
@@ -296,19 +295,19 @@ export default class MaskLayer extends InteractionLayer {
      *                              rendering
      */
     renderStack(
-        history = canvas.scene.getFlag(this.layername, "history"),
+        history = canvas.scene.getFlag("simple-fog", "history"),
         start = this.pointer,
-        stop = canvas.scene.getFlag(this.layername, "history.pointer"),
+        stop = canvas.scene.getFlag("simple-fog", "history.pointer"),
         isInit = false
     ) {
-        simplefogLogDebug("MaskLayer.renderStack");
+        simpleFogLogDebug("MaskLayer.renderStack");
         history = history || { events: [], pointer: 0 };
         // If history is blank, do nothing
         if (history === undefined && !isInit) {
-            simplefogLogDebug(
+            simpleFogLogDebug(
                 "MaskLayer.renderStack - set visible to autoEnableSceneFog"
             );
-            this.visible = game.settings.get("simplefog", "autoEnableSceneFog");
+            this.visible = game.settings.get("simple-fog", "autoEnableSceneFog");
             return;
         }
         // If history is zero, reset scene fog
@@ -321,7 +320,7 @@ export default class MaskLayer extends InteractionLayer {
             start = 0;
         }
 
-        simplefogLog(`Rendering from: ${start} to ${stop}`);
+        simpleFogLog(`Rendering from: ${start} to ${stop}`);
         // Render all ops starting from pointer
         for (let i = start; i < stop; i += 1) {
             for (let j = 0; j < history.events[i].length; j += 1) {
@@ -341,12 +340,12 @@ export default class MaskLayer extends InteractionLayer {
      * Add buffered history stack to scene flag and clear buffer
      */
     async commitHistory() {
-        simplefogLogDebug("MaskLayer.commitHistory");
+        simpleFogLogDebug("MaskLayer.commitHistory");
         // Do nothing if no history to be committed, otherwise get history
         if (this.historyBuffer.length === 0) return;
         if (this.lock) return;
         this.lock = true;
-        let history = canvas.scene.getFlag(this.layername, "history");
+        let history = canvas.scene.getFlag("simple-fog", "history");
         // If history storage doesnt exist, create it
         if (!history) {
             history = {
@@ -360,9 +359,9 @@ export default class MaskLayer extends InteractionLayer {
         // Push the new history buffer to the scene
         history.events.push(this.historyBuffer);
         history.pointer = history.events.length;
-        await canvas.scene.unsetFlag(this.layername, "history");
+        await canvas.scene.unsetFlag("simple-fog", "history");
         await this.setSetting("history", history);
-        simplefogLog(`Pushed ${this.historyBuffer.length} updates.`);
+        simpleFogLog(`Pushed ${this.historyBuffer.length} updates.`);
         // Clear the history buffer
         this.historyBuffer = [];
         this.lock = false;
@@ -373,13 +372,13 @@ export default class MaskLayer extends InteractionLayer {
      * @param save {Boolean} If true, also resets the layer history
      */
     async resetMask(save = true) {
-        simplefogLogDebug("MaskLayer.resetMask");
+        simpleFogLogDebug("MaskLayer.resetMask");
         // Fill fog layer with solid
         this.setFill();
         // If save, also unset history and reset pointer
         if (save) {
-            await canvas.scene.unsetFlag(this.layername, "history");
-            await canvas.scene.setFlag(this.layername, "history", {
+            await canvas.scene.unsetFlag("simple-fog", "history");
+            await canvas.scene.setFlag("simple-fog", "history", {
                 events: [],
                 pointer: 0
             });
@@ -391,7 +390,7 @@ export default class MaskLayer extends InteractionLayer {
      * Blanks out the mask of the layer
      */
     async blankMask() {
-        simplefogLogDebug("MaskLayer.blankMask");
+        simpleFogLogDebug("MaskLayer.blankMask");
         await this.resetMask();
         this.renderBrush({
             shape: this.BRUSH_TYPES.BOX,
@@ -409,12 +408,12 @@ export default class MaskLayer extends InteractionLayer {
      * @param steps {Integer} Number of steps to undo, default 1
      */
     async undo(steps = 1) {
-        simplefogLogDebug("MaskLayer.undo");
-        simplefogLog(`Undoing ${steps} steps.`);
+        simpleFogLogDebug("MaskLayer.undo");
+        simpleFogLog(`Undoing ${steps} steps.`);
         // Grab existing history
         // TODO: This could probably just grab and set the pointer for a slight
         // performance improvement
-        let history = canvas.scene.getFlag(this.layername, "history");
+        let history = canvas.scene.getFlag("simple-fog", "history");
         if (!history) {
             history = {
                 events: [],
@@ -425,8 +424,8 @@ export default class MaskLayer extends InteractionLayer {
         if (newpointer < 0) newpointer = 0;
         // Set new pointer & update history
         history.pointer = newpointer;
-        await canvas.scene.unsetFlag(this.layername, "history");
-        await canvas.scene.setFlag(this.layername, "history", history);
+        await canvas.scene.unsetFlag("simple-fog", "history");
+        await canvas.scene.setFlag("simple-fog", "history", history);
     }
 
     /* -------------------------------------------- */
@@ -516,7 +515,7 @@ export default class MaskLayer extends InteractionLayer {
      * Returns a blank PIXI Sprite of canvas dimensions
      */
     static getCanvasSprite() {
-        simplefogLogDebug("MaskLayer.getCanvasSprite");
+        simpleFogLogDebug("MaskLayer.getCanvasSprite");
         const sprite = new PIXI.Sprite(PIXI.Texture.WHITE);
         const d = canvas.dimensions;
         sprite.width = d.width;
@@ -531,7 +530,7 @@ export default class MaskLayer extends InteractionLayer {
      * Fills the mask layer with solid white
      */
     setFill() {
-        simplefogLogDebug("MaskLayer.setFill");
+        simpleFogLogDebug("MaskLayer.setFill");
         const fill = new PIXI.Graphics();
         fill.beginFill(0xffffff);
         fill.drawRect(0, 0, canvas.dimensions.width, canvas.dimensions.height);
@@ -544,13 +543,13 @@ export default class MaskLayer extends InteractionLayer {
      * Toggles visibility of primary layer
      */
     toggle() {
-        simplefogLogDebug("MaskLayer.toggle");
+        simpleFogLogDebug("MaskLayer.toggle");
         const v = this.getSetting("visible");
         this.visible = !v;
         this.setSetting("visible", !v);
 
         // If first time, set autofog to opposite so it doesn't reapply it.
-        let history = canvas.scene.getFlag(this.layername, "history");
+        let history = canvas.scene.getFlag("simple-fog", "history");
 
         if (history === undefined) {
             this.setSetting("autoFog", !v);
@@ -562,7 +561,7 @@ export default class MaskLayer extends InteractionLayer {
      * Actions upon layer becoming active
      */
     activate() {
-        simplefogLogDebug("MaskLayer.activate");
+        simpleFogLogDebug("MaskLayer.activate");
         super.activate();
         this.eventMode = "static";
     }
@@ -571,21 +570,21 @@ export default class MaskLayer extends InteractionLayer {
      * Actions upon layer becoming inactive
      */
     deactivate() {
-        simplefogLogDebug("MaskLayer.deactivate");
+        simpleFogLogDebug("MaskLayer.deactivate");
         super.deactivate();
         this.eventMode = "passive";
     }
 
     async draw() {
-        simplefogLogDebug("MaskLayer.draw");
+        simpleFogLogDebug("MaskLayer.draw");
         super.draw();
         this.initMask();
-        this.addChild(canvas.simplefog.fogImageOverlayLayer);
+        this.addChild(canvas.simpleFog.fogImageOverlayLayer);
         this.addChild(this.fogColorLayer);
         this.addChild(this.fogColorLayer.mask);
     }
 
     refreshZIndex() {
-        canvas.simplefog.zIndex = game.settings.get("simplefog", "zIndex");
+        canvas.simpleFog.zIndex = game.settings.get("simple-fog", "zIndex");
     }
 }

@@ -35,9 +35,9 @@ function _getCanvasCoords(placeable) {
 function _setPlaceableVisibility(placeable) {
     if (placeable.observer && !game.user.isGM) return;
     const pos = _getCanvasCoords(placeable);
-    const p = readPixel(canvas.simplefog.maskTexture, pos.x, pos.y);
+    const p = readPixel(canvas.simpleFog.maskTexture, pos.x, pos.y);
     const pAvg = (p[0] + p[1] + p[2]) / 3;
-    const v = pAvg / 255 < canvas.scene.getFlag("simplefog", "vThreshold");
+    const v = pAvg / 255 < canvas.scene.getFlag("simple-fog", "vThreshold");
     // if this is a door, we set vis on it's control object instead
     if (placeable.data.door) placeable.doorControl.visible = v;
     else placeable.visible = v;
@@ -45,15 +45,15 @@ function _setPlaceableVisibility(placeable) {
 
 /*
  * Extends canvas.sight.update() to set visibility for placeables based on
- * simplefog
+ * Simple Fog
  */
 export default function sightLayerUpdate() {
-    // Skip checking placeables if simplefog not visible anyway
-    if (!canvas.simplefog.visible) return;
+    // Skip checking placeables if simpleFog not visible anyway
+    if (!canvas.simpleFog.visible) return;
     // Skip if autoVisibility not enabled for this scene
-    if (!canvas.scene.getFlag("simplefog", "autoVisibility")) return;
+    if (!canvas.scene.getFlag("simple-fog", "autoVisibility")) return;
     // Skip if user is GM and autoVisGM Disabled
-    if (game.user.isGM && !canvas.scene.getFlag("simplefog", "autoVisGM"))
+    if (game.user.isGM && !canvas.scene.getFlag("simple-fog", "autoVisGM"))
         return;
     // Loop through placeables
     canvas.tokens.placeables.forEach(placeable => {
