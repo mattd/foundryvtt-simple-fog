@@ -1,10 +1,10 @@
-/* SimplefogHUDControlLayer extends CanvasLayer
+/* SimpleFogHUDControlLayer extends CanvasLayer
  *
- * Used as layer directly below simplefog for object HUD controls
+ * Used as layer directly below Simple Fog for object HUD controls
  */
 
 export default class SimpleFogHUDControlLayer extends InteractionLayer {
-    constructor(layername) {
+    constructor() {
         super();
     }
 

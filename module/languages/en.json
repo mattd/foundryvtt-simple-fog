@@ -33,8 +33,8 @@
     "SimpleFog.visThreshold": "Visibility Threshold",
     "SimpleFog.saveAsDef": "Save current settings as default",
     "SimpleFog.ok": "OK",
-    "SimpleFog.sf": "Simplefog",
-    "SimpleFog.onoff": "Enable/Disable Simplefog",
+    "SimpleFog.sf": "Simple Fog",
+    "SimpleFog.onoff": "Enable/Disable Simple Fog",
 
     "SimpleFog.brushTool": "Brush Tool",
     "SimpleFog.gridTool": "Grid Tool",
@@ -42,7 +42,7 @@
     "SimpleFog.boxTool": "Box Tool",
     "SimpleFog.ellipseTool": "Ellipse Tool",
     "SimpleFog.sceneConfig": "Scene Configuration",
-    "SimpleFog.reset": "Reset Simplefog",
+    "SimpleFog.reset": "Reset Simple Fog",
     "SimpleFog.confirmReset": "Are you sure? Fog of war will be reset.",
 
     "SimpleFog.configurableZindex": "Simple Fog Z-Index",
@@ -54,7 +54,7 @@
     "SimpleFog.disableFog": "Disable Simple Fog",
 
     "SimpleFog.enableHotkeys": "Enable Simplefog Hotkeys",
-    "SimpleFog.hotkeyNotes": "When enabled, you will be able to quickly swap to the simplefog control by using Ctrl+S and toggle the opacity using the hotkey 'T'",
+    "SimpleFog.hotkeyNotes": "When enabled, you will be able to quickly swap to the Simple Fog control by using Ctrl+S and toggle the opacity using the hotkey 'T'",
     "SimpleFog.hotkeyTool": "Hotkey Tool",
     "SimpleFog.hotkeyToolNotes": "Determine which tool will be selected when hotkey is activated.",
 

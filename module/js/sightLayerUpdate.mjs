@@ -45,11 +45,11 @@ function _setPlaceableVisibility(placeable) {
 
 /*
  * Extends canvas.sight.update() to set visibility for placeables based on
- * simplefog
+ * Simple Fog
  */
 export default function sightLayerUpdate() {
-    // Skip checking placeables if simplefog not visible anyway
-    if (!canvas.simplefog.visible) return;
+    // Skip checking placeables if simpleFog not visible anyway
+    if (!canvas.simpleFog.visible) return;
     // Skip if autoVisibility not enabled for this scene
     if (!canvas.scene.getFlag("simple-fog", "autoVisibility")) return;
     // Skip if user is GM and autoVisGM Disabled

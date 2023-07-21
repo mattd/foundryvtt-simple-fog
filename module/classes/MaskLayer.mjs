@@ -8,10 +8,9 @@
 import { simpleFogLog, simpleFogLogDebug } from "../js/utils.mjs";
 
 export default class MaskLayer extends InteractionLayer {
-    constructor(layername) {
+    constructor() {
         super();
         this.lock = false;
-        this.layername = layername;
         this.historyBuffer = [];
         this.pointer = 0;
         this.gridLayout = {};
@@ -265,25 +264,25 @@ export default class MaskLayer extends InteractionLayer {
      */
 
     getSetting(name) {
-        let setting = canvas.scene.getFlag(this.layername, name);
+        let setting = canvas.scene.getFlag("simple-fog", name);
         if (setting === undefined) setting = this.getUserSetting(name);
         if (setting === undefined) setting = this.DEFAULTS[name];
         return setting;
     }
 
     async setSetting(name, value) {
-        const v = await canvas.scene.setFlag(this.layername, name, value);
+        const v = await canvas.scene.setFlag("simple-fog", name, value);
         return v;
     }
 
     getUserSetting(name) {
-        let setting = game.user.getFlag(this.layername, name);
+        let setting = game.user.getFlag("simple-fog", name);
         if (setting === undefined) setting = this.DEFAULTS[name];
         return setting;
     }
 
     async setUserSetting(name, value) {
-        const v = await game.user.setFlag(this.layername, name, value);
+        const v = await game.user.setFlag("simple-fog", name, value);
         return v;
     }
 
@@ -296,9 +295,9 @@ export default class MaskLayer extends InteractionLayer {
      *                              rendering
      */
     renderStack(
-        history = canvas.scene.getFlag(this.layername, "history"),
+        history = canvas.scene.getFlag("simple-fog", "history"),
         start = this.pointer,
-        stop = canvas.scene.getFlag(this.layername, "history.pointer"),
+        stop = canvas.scene.getFlag("simple-fog", "history.pointer"),
         isInit = false
     ) {
         simpleFogLogDebug("MaskLayer.renderStack");
@@ -346,7 +345,7 @@ export default class MaskLayer extends InteractionLayer {
         if (this.historyBuffer.length === 0) return;
         if (this.lock) return;
         this.lock = true;
-        let history = canvas.scene.getFlag(this.layername, "history");
+        let history = canvas.scene.getFlag("simple-fog", "history");
         // If history storage doesnt exist, create it
         if (!history) {
             history = {
@@ -360,7 +359,7 @@ export default class MaskLayer extends InteractionLayer {
         // Push the new history buffer to the scene
         history.events.push(this.historyBuffer);
         history.pointer = history.events.length;
-        await canvas.scene.unsetFlag(this.layername, "history");
+        await canvas.scene.unsetFlag("simple-fog", "history");
         await this.setSetting("history", history);
         simpleFogLog(`Pushed ${this.historyBuffer.length} updates.`);
         // Clear the history buffer
@@ -378,8 +377,8 @@ export default class MaskLayer extends InteractionLayer {
         this.setFill();
         // If save, also unset history and reset pointer
         if (save) {
-            await canvas.scene.unsetFlag(this.layername, "history");
-            await canvas.scene.setFlag(this.layername, "history", {
+            await canvas.scene.unsetFlag("simple-fog", "history");
+            await canvas.scene.setFlag("simple-fog", "history", {
                 events: [],
                 pointer: 0
             });
@@ -414,7 +413,7 @@ export default class MaskLayer extends InteractionLayer {
         // Grab existing history
         // TODO: This could probably just grab and set the pointer for a slight
         // performance improvement
-        let history = canvas.scene.getFlag(this.layername, "history");
+        let history = canvas.scene.getFlag("simple-fog", "history");
         if (!history) {
             history = {
                 events: [],
@@ -425,8 +424,8 @@ export default class MaskLayer extends InteractionLayer {
         if (newpointer < 0) newpointer = 0;
         // Set new pointer & update history
         history.pointer = newpointer;
-        await canvas.scene.unsetFlag(this.layername, "history");
-        await canvas.scene.setFlag(this.layername, "history", history);
+        await canvas.scene.unsetFlag("simple-fog", "history");
+        await canvas.scene.setFlag("simple-fog", "history", history);
     }
 
     /* -------------------------------------------- */
@@ -550,7 +549,7 @@ export default class MaskLayer extends InteractionLayer {
         this.setSetting("visible", !v);
 
         // If first time, set autofog to opposite so it doesn't reapply it.
-        let history = canvas.scene.getFlag(this.layername, "history");
+        let history = canvas.scene.getFlag("simple-fog", "history");
 
         if (history === undefined) {
             this.setSetting("autoFog", !v);
@@ -580,7 +579,7 @@ export default class MaskLayer extends InteractionLayer {
         simpleFogLogDebug("MaskLayer.draw");
         super.draw();
         this.initMask();
-        this.addChild(canvas.simplefog.fogImageOverlayLayer);
+        this.addChild(canvas.simpleFog.fogImageOverlayLayer);
         this.addChild(this.fogColorLayer);
         this.addChild(this.fogColorLayer.mask);
     }

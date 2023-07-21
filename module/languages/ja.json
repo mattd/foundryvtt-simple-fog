@@ -55,7 +55,7 @@
     "SimpleFog.disableFog": "シンプルフォグを無効にする",
 
     "SimpleFog.enableHotkeys": "ホットキーを有効にする",
-    "SimpleFog.hotkeyNotes": "有効にすると、Ctrl + Sを使用してsimplefogコントロールにすばやく切り替え、ホットキー「T」を使用して不透明度を切り替えることができます。",
+    "SimpleFog.hotkeyNotes": "有効にすると、Ctrl + Sを使用してSimple Fogコントロールにすばやく切り替え、ホットキー「T」を使用して不透明度を切り替えることができます。",
     "SimpleFog.hotkeyTool": "ホットキーツール",
     "SimpleFog.hotkeyToolNotes": "ホットキーがアクティブ化されたときに選択されるツールを決定します。",
 

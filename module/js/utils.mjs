@@ -7,7 +7,7 @@ import CONSTANTS from "./constants.mjs";
 /**
  * Prints formatted console msg if string, otherwise dumps object
  * @param data {String | Object} Output to be dumped
- * @param force {Boolean}        Log output even if CONFIG.debug.simplefog = false
+ * @param force {Boolean}        Log output even if CONFIG.debug.simpleFog = false
  */
 export function simpleFogLog(data, force = false) {
     try {

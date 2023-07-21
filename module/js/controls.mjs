@@ -9,7 +9,7 @@ export const onGetSceneControlButtons = function (controls) {
     simpleFogLogDebug("controls.getSceneControlButtons");
     if (!game.user.isGM) return;
     controls.push({
-        name: "simpleFog",
+        name: "Simple Fog",
         title: game.i18n.localize("SimpleFog.sf"),
         icon: "fas fa-cloud",
         layer: "simpleFog",
@@ -108,7 +108,7 @@ export const onRenderSceneControls = function (controls) {
                 new BrushControls().render(true);
             }
             // Set active tool
-            canvas.simplefog.setActiveTool(controls.activeTool);
+            canvas.simpleFog.setActiveTool(controls.activeTool);
         }
         // Switching away from layer
         else {

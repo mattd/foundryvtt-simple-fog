@@ -11,7 +11,7 @@ export default class SimpleFogConfig extends FormApplication {
             editable: game.user.isGM,
             width: 500,
             template: "modules/simple-fog/templates/scene-config.html",
-            id: "simplefog-scene-config",
+            id: "simple-fog-scene-config",
             title: game.i18n.localize("Simple Fog Options")
         });
     }
