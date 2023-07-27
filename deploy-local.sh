@@ -8,5 +8,6 @@ else
     mv build.zip $TARGET_DIR
     cd $TARGET_DIR
     unzip -o build.zip
+    rm build.zip
     cd $ORIGIN_DIR
 fi
