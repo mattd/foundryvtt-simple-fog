@@ -40,7 +40,7 @@ export const onReady = async () => {
     canvas.simpleFog.refreshZIndex();
 
     // Move object hud to tokens layer
-    game.canvas.controls.hud.setParent(game.canvas.simpleFogHUDControls);
+    canvas.controls.hud.setParent(canvas.simpleFogHUDControls);
 
     canvas.perception.refresh();
 
