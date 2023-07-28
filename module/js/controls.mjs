@@ -6,7 +6,7 @@ import { simpleFogLogDebug } from "./utils.mjs";
  * Add control buttons
  */
 export const onGetSceneControlButtons = function (controls) {
-    simpleFogLogDebug("controls.getSceneControlButtons");
+    simpleFogLogDebug("controls.onGetSceneControlButtons");
     if (!game.user.isGM) return;
     controls.push({
         name: "simpleFog",
@@ -15,10 +15,14 @@ export const onGetSceneControlButtons = function (controls) {
         layer: "simpleFog",
         tools: [
             {
-                name: "simpleFogToggle",
+                name: "toggleSimpleFog",
                 title: game.i18n.localize("SimpleFog.onoff"),
-                icon: "fas fa-eye",
-                onClick: () => toggleSimpleFog(),
+                icon: (
+                    canvas.simpleFog?.visible ?
+                    "fas fa-eye" :
+                    "fas fa-eye-slash"
+                ),
+                onClick: () => maybeToggleSimpleFog(),
                 active: canvas.simpleFog?.visible,
                 toggle: true
             },
@@ -57,7 +61,7 @@ export const onGetSceneControlButtons = function (controls) {
                 button: true
             },
             {
-                name: "clearfog",
+                name: "clearFog",
                 title: game.i18n.localize("SimpleFog.reset"),
                 icon: "fas fa-trash",
                 onClick: () => {
@@ -134,11 +138,8 @@ export const setBrushControlPos = function () {
     }
 }
 
-/**
- * Toggle Simple Fog
- */
-function toggleSimpleFog() {
-    simpleFogLogDebug("controls.toggleSimpleFog");
+function maybeToggleSimpleFog() {
+    simpleFogLogDebug("controls.maybeToggleSimpleFog");
     if (
         game.settings.get("simple-fog", "confirmFogDisable") &&
         canvas.simpleFog.getSetting("visible")
@@ -146,27 +147,33 @@ function toggleSimpleFog() {
         let dg = Dialog.confirm({
             title: game.i18n.localize("SimpleFog.disableFog"),
             content: game.i18n.localize("SimpleFog.confirmDisableFog"),
-            yes: () => toggleOffSimpleFog(),
+            yes: () => toggleSimpleFog(),
             no: () => cancelToggleSimpleFog(),
             defaultYes: false,
             rejectClose: true
         });
         dg.then(undefined, cancelToggleSimpleFog);
     } else {
-        toggleOffSimpleFog();
+        toggleSimpleFog();
     }
 }
 
-function toggleOffSimpleFog() {
+function toggleSimpleFog() {
+    const toggleButton = getSimpleFogControls().tools[0];
+
     canvas.simpleFog.toggle();
+    toggleButton.icon = toggleButton.active ? "fas fa-eye" : "fas fa-eye-slash";
+    ui.controls.render();
 
     // TODO: Determine replacement for canvas.sight.refresh()
     canvas.perception.refresh();
 }
 
 function cancelToggleSimpleFog(result = undefined) {
-    ui.controls.controls.find(
-        ({ name }) => name === "simpleFog"
-    ).tools[0].active = true;
+    getSimpleFogControls().tools[0].active = true;
     ui.controls.render();
+}
+
+function getSimpleFogControls() {
+    return ui.controls.controls.find(({ name }) => name === "simpleFog");
 }

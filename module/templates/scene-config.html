@@ -1,9 +1,12 @@
 <form>
     <h3 class="form-header">
-        <i class="fas fa-crown"></i> {{localize 'SimpleFog.gmFogSettings'}}
+        <i class="fas fa-crown"></i>
+        {{localize "SimpleFog.gmFogSettings"}}
     </h3>
     <div class="form-group">
-        <label for="gmColorTint">{{localize 'SimpleFog.gmColorTint'}}</label>
+        <label for="gmColorTint">
+            {{localize "SimpleFog.gmColorTint"}}
+        </label>
         <input
             class="color"
             type="text"
@@ -11,10 +14,16 @@
             value="{{ gmColorTint }}"
             data-dtype="String"
         />
-        <input type="color" value="{{ gmColorTint }}" data-edit="gmColorTint" />
+        <input
+            type="color"
+            value="{{ gmColorTint }}"
+            data-edit="gmColorTint"
+        />
     </div>
     <div class="form-group">
-        <label for="gmColorAlpha">{{localize 'SimpleFog.gmColorAlpha'}}</label>
+        <label for="gmColorAlpha">
+            {{localize "SimpleFog.gmColorAlpha"}}
+        </label>
         <input
             type="range"
             name="gmColorAlpha"
@@ -24,16 +33,19 @@
             step="1"
             data-dtype="Number"
         />
-        <span class="range-value">{{ gmColorAlpha }}</span>
+        <span class="range-value">
+            {{ gmColorAlpha }}
+        </span>
     </div>
 
     <h3 class="form-header">
-        <i class="fas fa-users"></i> {{localize 'SimpleFog.playerFogSettings'}}
+        <i class="fas fa-users"></i>
+        {{localize "SimpleFog.playerFogSettings"}}
     </h3>
     <div class="form-group">
-        <label for="playerColorTint"
-            >{{localize 'SimpleFog.playerColorTint'}}</label
-        >
+        <label for="playerColorTint">
+            {{localize "SimpleFog.playerColorTint"}}
+        </label>
         <input
             class="color"
             type="text"
@@ -48,9 +60,9 @@
         />
     </div>
     <div class="form-group">
-        <label for="playerColorAlpha"
-            >{{localize 'SimpleFog.playerColorAlpha'}}</label
-        >
+        <label for="playerColorAlpha">
+            {{localize "SimpleFog.playerColorAlpha"}}
+        </label>
         <input
             type="range"
             name="playerColorAlpha"
@@ -60,17 +72,19 @@
             step="1"
             data-dtype="Number"
         />
-        <span class="range-value">{{ playerColorAlpha }}</span>
+        <span class="range-value">
+            {{ playerColorAlpha }}
+        </span>
     </div>
 
     <h3 class="form-header">
-        <i class="fas fa-image"></i> {{localize
-        'SimpleFog.fogImageOverlaySettings'}}
+        <i class="fas fa-image"></i>
+        {{localize "SimpleFog.fogImageOverlaySettings"}}
     </h3>
     <div class="form-group">
-        <label for="fogImageOverlayFilePath"
-            >{{localize 'SimpleFog.fogImageOverlay'}}</label
-        >
+        <label for="fogImageOverlayFilePath">
+            {{localize "SimpleFog.fogImageOverlay"}}
+        </label>
         <button
             type="button"
             class="file-picker"
@@ -90,11 +104,13 @@
             data-dtype="String"
         />
     </div>
-    <p class="notes">{{ localize 'SimpleFog.fogImageOverlayNotes' }}</p>
+    <p class="notes">
+        {{localize "SimpleFog.fogImageOverlayNotes"}}
+    </p>
     <div class="form-group">
-        <label for="fogImageOverlayGMAlpha"
-            >{{localize 'SimpleFog.fogImageOverlayGMAlpha'}}</label
-        >
+        <label for="fogImageOverlayGMAlpha">
+            {{localize "SimpleFog.fogImageOverlayGMAlpha"}}
+        </label>
         <input
             type="range"
             name="fogImageOverlayGMAlpha"
@@ -104,12 +120,14 @@
             step="1"
             data-dtype="Number"
         />
-        <span class="range-value">{{ fogImageOverlayGMAlpha }}</span>
+        <span class="range-value">
+            {{ fogImageOverlayGMAlpha }}
+        </span>
     </div>
     <div class="form-group">
-        <label for="fogImageOverlayPlayerAlpha"
-            >{{localize 'SimpleFog.fogImageOverlayPlayerAlpha'}}</label
-        >
+        <label for="fogImageOverlayPlayerAlpha">
+            {{localize "SimpleFog.fogImageOverlayPlayerAlpha"}}
+        </label>
         <input
             type="range"
             name="fogImageOverlayPlayerAlpha"
@@ -119,28 +137,43 @@
             step="1"
             data-dtype="Number"
         />
-        <span class="range-value">{{ fogImageOverlayPlayerAlpha }}</span>
+        <span class="range-value">
+            {{ fogImageOverlayPlayerAlpha }}
+        </span>
     </div>
     <div class="form-group">
-        <label for="fogImageOverlayZIndex"
-            >{{localize 'SimpleFog.fogImageOverlayZIndex'}}</label
-        >
+        <label for="fogImageOverlayZIndex">
+            {{localize "SimpleFog.fogImageOverlayZIndex"}}
+        </label>
         <select name="fogImageOverlayZIndex">
-            {{selectOptions fogImageOverlayZIndexOptions
-            selected=fogImageOverlayZIndex}}
+            {{
+                selectOptions
+                fogImageOverlayZIndexOptions
+                selected=fogImageOverlayZIndex
+            }}
         </select>
     </div>
 
     <h3 class="form-header">
-        <i class="fas fa-filter"></i> {{localize 'SimpleFog.filterSettings'}}
+        <i class="fas fa-filter"></i>
+        {{localize "SimpleFog.filterSettings"}}
     </h3>
     <div class="form-group">
-        <label for="blurEnable">{{localize 'SimpleFog.blurEnable'}}</label>
-        <input type='checkbox' {{#if blurEnable}}checked{{/if}}
-        name='blurEnable' />
+        <label for="blurEnable">
+            {{localize "SimpleFog.blurEnable"}}
+        </label>
+        <input
+            type="checkbox"
+            {{#if blurEnable}}
+                checked
+            {{/if}}
+            name="blurEnable"
+        />
     </div>
     <div class="form-group">
-        <label for="blurRadius">{{localize 'SimpleFog.blurRadius'}}</label>
+        <label for="blurRadius">
+            {{localize "SimpleFog.blurRadius"}}
+        </label>
         <input
             type="range"
             name="blurRadius"
@@ -150,10 +183,14 @@
             step="1"
             data-dtype="Number"
         />
-        <span class="range-value">{{ blurRadius }}</span>
+        <span class="range-value">
+            {{ blurRadius }}
+        </span>
     </div>
     <div class="form-group">
-        <label for="blurQuality">{{localize 'SimpleFog.blurQuality'}}</label>
+        <label for="blurQuality">
+            {{localize "SimpleFog.blurQuality"}}
+        </label>
         <input
             type="range"
             name="blurQuality"
@@ -163,25 +200,34 @@
             step="1"
             data-dtype="Number"
         />
-        <span class="range-value">{{ blurQuality }}</span>
-        <p class="notes">{{localize 'SimpleFog.blurQualityDesc'}}</p>
+        <span class="range-value">
+            {{ blurQuality }}
+        </span>
+        <p class="notes">
+            {{localize "SimpleFog.blurQualityDesc"}}
+        </p>
     </div>
 
     <h3 class="form-header">
-        <i class="fas fa-adjust"></i> {{localize
-        'SimpleFog.transitionSettings'}}
+        <i class="fas fa-adjust"></i>
+        {{localize "SimpleFog.transitionSettings"}}
     </h3>
     <div class="form-group">
-        <label for="transition"
-            >{{localize 'SimpleFog.enableTransitions'}}</label
-        >
-        <input type='checkbox' {{#if transition}}checked{{/if}}
-        name='transition' />
+        <label for="transition">
+            {{localize "SimpleFog.enableTransitions"}}
+        </label>
+        <input
+            type="checkbox"
+            {{#if transition}}
+                checked
+            {{/if}}
+            name="transition"
+        />
     </div>
     <div class="form-group">
-        <label for="transitionSpeed"
-            >{{localize 'SimpleFog.transitionSpeed'}}</label
-        >
+        <label for="transitionSpeed">
+            {{localize "SimpleFog.transitionSpeed"}}
+        </label>
         <input
             type="range"
             name="transitionSpeed"
@@ -191,28 +237,45 @@
             step="100"
             data-dtype="Number"
         />
-        <span class="range-value">{{ transitionSpeed }}</span>
+        <span class="range-value">
+            {{ transitionSpeed }}
+        </span>
     </div>
     <h3 class="form-header">
-        <i class="fas fa-low-vision"></i> {{localize
-        'SimpleFog.visibilitySettings'}}
+        <i class="fas fa-low-vision"></i>
+        {{localize "SimpleFog.visibilitySettings"}}
     </h3>
-    <p class="notes">{{ localize 'SimpleFog.autoVisNotes' }}</p>
+    <p class="notes">
+        {{localize "SimpleFog.autoVisNotes"}}
+    </p>
     <div class="form-group">
-        <label for="autoVisibility"
-            >{{localize 'SimpleFog.enableAutovis'}}</label
-        >
-        <input type='checkbox' {{#if autoVisibility}}checked{{/if}}
-        name='autoVisibility' />
-    </div>
-
-    <div class="form-group">
-        <label for="autoVisGM">{{localize 'SimpleFog.enableForGM'}}</label>
-        <input type='checkbox' {{#if autoVisGM}}checked{{/if}} name='autoVisGM'
+        <label for="autoVisibility">
+            {{localize "SimpleFog.enableAutovis"}}
+        </label>
+        <input
+            type="checkbox"
+            {{#if autoVisibility}}
+                checked
+            {{/if}}
+            name="autoVisibility"
         />
     </div>
     <div class="form-group">
-        <label for="vThreshold">{{localize 'SimpleFog.visThreshold'}}</label>
+        <label for="autoVisGM">
+            {{localize "SimpleFog.enableForGM"}}
+        </label>
+        <input
+            type="checkbox"
+            {{#if autoVisGM}}
+                checked
+            {{/if}}
+            name="autoVisGM"
+        />
+    </div>
+    <div class="form-group">
+        <label for="vThreshold">
+            {{localize "SimpleFog.visThreshold"}}
+        </label>
         <input
             type="range"
             name="vThreshold"
@@ -222,16 +285,19 @@
             step="1"
             data-dtype="Number"
         />
-        <span class="range-value">{{ vThreshold }}</span>
+        <span class="range-value">
+            {{ vThreshold }}
+        </span>
     </div>
-
     <hr />
     <footer class="sheet-footer flexrow">
         <button type="submit" name="saveDefaults">
-            <i class="fas fa-save"></i> {{localize 'SimpleFog.saveAsDef'}}
+            <i class="fas fa-save"></i>
+            {{localize "SimpleFog.saveAsDef"}}
         </button>
         <button type="submit" name="submit">
-            <i class="fa fa-check"></i> {{localize 'SimpleFog.ok'}}
+            <i class="fa fa-check"></i>
+            {{localize "SimpleFog.ok"}}
         </button>
     </footer>
 </form>
