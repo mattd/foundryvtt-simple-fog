@@ -6,7 +6,7 @@ import { simpleFogLogDebug } from "./utils.mjs";
  * Add control buttons
  */
 export const onGetSceneControlButtons = function (controls) {
-    simpleFogLogDebug("controls.getSceneControlButtons");
+    simpleFogLogDebug("controls.onGetSceneControlButtons");
     if (!game.user.isGM) return;
     controls.push({
         name: "simpleFog",
@@ -17,7 +17,11 @@ export const onGetSceneControlButtons = function (controls) {
             {
                 name: "toggleSimpleFog",
                 title: game.i18n.localize("SimpleFog.onoff"),
-                icon: "fas fa-eye",
+                icon: (
+                    canvas.simpleFog?.visible ?
+                    "fas fa-eye" :
+                    "fas fa-eye-slash"
+                ),
                 onClick: () => maybeToggleSimpleFog(),
                 active: canvas.simpleFog?.visible,
                 toggle: true
@@ -155,15 +159,21 @@ function maybeToggleSimpleFog() {
 }
 
 function toggleSimpleFog() {
+    const toggleButton = getSimpleFogControls().tools[0];
+
     canvas.simpleFog.toggle();
+    toggleButton.icon = toggleButton.active ? "fas fa-eye" : "fas fa-eye-slash";
+    ui.controls.render();
 
     // TODO: Determine replacement for canvas.sight.refresh()
     canvas.perception.refresh();
 }
 
 function cancelToggleSimpleFog(result = undefined) {
-    ui.controls.controls.find(
-        ({ name }) => name === "simpleFog"
-    ).tools[0].active = true;
+    getSimpleFogControls().tools[0].active = true;
     ui.controls.render();
+}
+
+function getSimpleFogControls() {
+    return ui.controls.controls.find(({ name }) => name === "simpleFog");
 }
