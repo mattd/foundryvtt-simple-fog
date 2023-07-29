@@ -118,7 +118,7 @@
     "systems": [],
     "scripts": [],
     "esmodules": ["main.mjs"],
-    "styles": ["css/brush-controls.css"],
+    "styles": ["css/controls.css"],
     "compatibility": {
         "minimum": 11,
         "verified": 11.305,

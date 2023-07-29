@@ -3,14 +3,12 @@ import { hexToPercent, percentToHex } from "../js/utils.mjs";
 export default class BrushControls extends FormApplication {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["form"],
             closeOnSubmit: false,
             submitOnChange: true,
             submitOnClose: true,
             popOut: false,
             editable: game.user.isGM,
             template: "modules/simple-fog/templates/brush-controls.html",
-            id: "filter-config",
             title: game.i18n.localize("Simple Fog Options")
         });
     }
