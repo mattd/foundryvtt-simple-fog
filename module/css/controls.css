@@ -4,6 +4,13 @@
     width: 180px;
     text-align: center;
 }
+.simple-fog-enabled #simple-fog-brush-controls {
+    opacity: 1.0;
+}
+.simple-fog-disabled #simple-fog-brush-controls {
+    opacity: 0.3;
+    pointer-events: none;
+}
 
 #simple-fog-brush-controls h3,
 #simple-fog-brush-controls .label {
@@ -23,6 +30,11 @@
 }
 #simple-fog-brush-controls .left-label {
     left: 0;
+}
+
+.simple-fog-disabled #controls ol.active > li[data-tool="toggleSimpleFog"] ~ li {
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 /* Webkit browsers */

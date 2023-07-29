@@ -1,38 +1,36 @@
-<div id="simple-fog-brush-controls">
-    <form id="simple-fog-brush-controls-form">
-        <div id="brush-size-container">
-            <h3 class="form-header">{{localize "SimpleFog.brushSize"}}</h3>
-            <div class="form-group">
-                <input
-                    type="range"
-                    name="brushSize"
-                    value="{{ brushSize }}"
-                    min="10"
-                    max="500"
-                    step="10"
-                    data-dtype="Number"
-                />
+<form id="simple-fog-brush-controls">
+    <div id="brush-size-container">
+        <h3 class="form-header">{{localize "SimpleFog.brushSize"}}</h3>
+        <div class="form-group">
+            <input
+                type="range"
+                name="brushSize"
+                value="{{ brushSize }}"
+                min="10"
+                max="500"
+                step="10"
+                data-dtype="Number"
+            />
+        </div>
+    </div>
+    <div id="brush-opacity-container">
+        <h3 class="form-header">{{localize "SimpleFog.brushOpacity"}}</h3>
+        <div class="form-group brush-opacity">
+            <input
+                type="range"
+                name="brushOpacity"
+                value="{{ brushOpacity }}"
+                min="0"
+                max="100"
+                step="1"
+                data-dtype="Number"
+            />
+            <div class="label left-label">
+                {{localize "SimpleFog.reveal"}}
+            </div>
+            <div class="label right-label">
+                {{localize "SimpleFog.hide"}}
             </div>
         </div>
-        <div id="brush-opacity-container">
-            <h3 class="form-header">{{localize "SimpleFog.brushOpacity"}}</h3>
-            <div class="form-group brush-opacity">
-                <input
-                    type="range"
-                    name="brushOpacity"
-                    value="{{ brushOpacity }}"
-                    min="0"
-                    max="100"
-                    step="1"
-                    data-dtype="Number"
-                />
-                <div class="label left-label">
-                    {{localize "SimpleFog.reveal"}}
-                </div>
-                <div class="label right-label">
-                    {{localize "SimpleFog.hide"}}
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+    </div>
+</form>

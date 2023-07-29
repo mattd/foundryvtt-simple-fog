@@ -100,7 +100,7 @@ export const onGetSceneControlButtons = function (controls) {
  * and switching active brush flag
  */
 export const onRenderSceneControls = function (controls) {
-    simpleFogLogDebug("controls.renderSceneControls");
+    simpleFogLogDebug("controls.onRenderSceneControls");
     // Switching to layer
     if (canvas.simpleFog != null) {
         if (
@@ -111,19 +111,26 @@ export const onRenderSceneControls = function (controls) {
             if (!$("#simple-fog-brush-controls").length) {
                 new BrushControls().render(true);
             }
+
             // Set active tool
             canvas.simpleFog.setActiveTool(controls.activeTool);
+
+            setEnabledState();
         }
         // Switching away from layer
         else {
+            clearEnabledState();
+
             // Clear active tool
             canvas.simpleFog.clearActiveTool();
+
             // Remove brush tools if open
             const bc = $("#simple-fog-brush-controls")[0];
             if (bc) bc.remove();
         }
     }
 };
+
 
 /**
  * Sets Y position of the brush controls to account for scene navigation buttons
@@ -159,14 +166,27 @@ function maybeToggleSimpleFog() {
 }
 
 function toggleSimpleFog() {
-    const toggleButton = getSimpleFogControls().tools[0];
-
     canvas.simpleFog.toggle();
+
+    clearEnabledState()
+
+    const toggleButton = getSimpleFogControls().tools[0];
     toggleButton.icon = toggleButton.active ? "fas fa-eye" : "fas fa-eye-slash";
     ui.controls.render();
 
+    setEnabledState();
+
     // TODO: Determine replacement for canvas.sight.refresh()
     canvas.perception.refresh();
+}
+
+function setEnabledState() {
+    const enabledState = canvas.simpleFog.visible ? "enabled" : "disabled";
+    $("body").addClass(`simple-fog-${enabledState}`);
+}
+
+function clearEnabledState() {
+    $("body").removeClass(["simple-fog-enabled", "simple-fog-disabled"]);
 }
 
 function cancelToggleSimpleFog(result = undefined) {
