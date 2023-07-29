@@ -32,7 +32,7 @@
     left: 0;
 }
 
-#controls ol.active > li[data-tool="toggleSimpleFog"]:has(i.fa-eye-slash) ~ li {
+.simple-fog-disabled #controls ol.active > li[data-tool="toggleSimpleFog"] ~ li {
     opacity: 0.3;
     pointer-events: none;
 }

@@ -111,15 +111,19 @@ export const onRenderSceneControls = function (controls) {
             if (!$("#simple-fog-brush-controls").length) {
                 new BrushControls().render(true);
             }
+
             // Set active tool
             canvas.simpleFog.setActiveTool(controls.activeTool);
+
             setEnabledState();
         }
         // Switching away from layer
         else {
             clearEnabledState();
+
             // Clear active tool
             canvas.simpleFog.clearActiveTool();
+
             // Remove brush tools if open
             const bc = $("#simple-fog-brush-controls")[0];
             if (bc) bc.remove();
